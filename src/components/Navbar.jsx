@@ -107,9 +107,9 @@ export default function Navbar() {
           <div className="hidden sm:flex items-center gap-3">
             <Link
               to="/tour"
-              className="hidden md:flex items-center gap-2 text-xs text-[#2B2118] font-medium px-3.5 py-1.5 rounded-full border border-[rgba(60,45,30,0.18)] hover:border-[#A9814A] hover:text-[#A9814A] transition-all bg-[#FAF6EF]"
+              className="hidden md:flex items-center gap-2 text-xs text-[#1C140D] font-medium px-3.5 py-1.5 rounded-full border border-[rgba(60,45,30,0.18)] hover:border-[#8A5620] hover:text-[#8A5620] transition-all bg-[#FAF6EF]"
             >
-              <Compass className="w-3.5 h-3.5 text-[#A9814A]" strokeWidth={1.4} />
+              <Compass className="w-3.5 h-3.5 text-[#8A5620]" strokeWidth={1.5} />
               <span>360 Virtual Study</span>
             </Link>
 
@@ -117,8 +117,8 @@ export default function Navbar() {
               to="/contact"
               className="group flex items-center gap-2.5 pl-4 pr-1.5 py-1.5 rounded-full btn-primary text-xs tracking-wide shadow-sm"
             >
-              <span className="font-medium">Consultation</span>
-              <div className="w-6 h-6 rounded-full bg-[#A9814A] text-white flex items-center justify-center group-hover:bg-[#8C6A3B] transition-colors">
+              <span className="font-medium text-[#FAF6EF]">Consultation</span>
+              <div className="w-6 h-6 rounded-full bg-[#8A5620] text-white flex items-center justify-center group-hover:bg-[#634015] transition-colors">
                 <ArrowUpRight className="w-3.5 h-3.5" strokeWidth={1.5} />
               </div>
             </Link>

@@ -50,14 +50,14 @@ export default function Contact() {
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="max-w-2xl mb-14">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#FAF6EF] border border-[rgba(60,45,30,0.14)] text-[10px] text-[#A9814A] font-mono uppercase tracking-[0.2em] mb-3">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#FAF6EF] border border-[rgba(60,45,30,0.16)] text-[10px] text-[#8A5620] font-mono uppercase tracking-[0.2em] mb-3 shadow-2xs font-semibold">
             <span>Project Inquiries</span>
           </div>
-          <h1 className="text-4xl sm:text-5xl font-serif font-light text-[#2B2118] leading-tight">
+          <h1 className="text-4xl sm:text-5xl font-serif font-light text-[#1C140D] leading-tight">
             Begin your architectural <br />
-            <span className="italic font-normal text-[#A9814A]">consultation.</span>
+            <span className="italic font-normal text-[#8A5620]">consultation.</span>
           </h1>
-          <p className="text-xs sm:text-sm text-[#6F6254] mt-3 leading-relaxed">
+          <p className="text-xs sm:text-sm text-[#574839] mt-3 leading-relaxed">
             Schedule an initial consultation at our Ambala studio or request an on-site property review across Northern India.
           </p>
         </div>
@@ -65,15 +65,15 @@ export default function Contact() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
           {/* Form Column */}
           <div className="lg:col-span-7">
-            <div className="card-ivory p-6 sm:p-9 rounded-2xl border border-[rgba(60,45,30,0.12)] shadow-sm relative">
+            <div className="card-ivory p-6 sm:p-9 rounded-2xl border border-[rgba(60,45,30,0.14)] shadow-sm relative">
               {submitted ? (
                 <div className="py-14 text-center flex flex-col items-center gap-3">
-                  <div className="w-12 h-12 rounded-full bg-[#EAE1D3] text-[#2B2118] flex items-center justify-center border border-[#A9814A]">
-                    <CheckCircle2 className="w-6 h-6 text-[#A9814A]" strokeWidth={1.4} />
+                  <div className="w-12 h-12 rounded-full bg-[#EAE1D3] text-[#1C140D] flex items-center justify-center border border-[#8A5620]">
+                    <CheckCircle2 className="w-6 h-6 text-[#8A5620]" strokeWidth={1.5} />
                   </div>
-                  <h3 className="text-2xl font-serif text-[#2B2118]">Consultation Request Received</h3>
-                  <p className="text-xs sm:text-sm text-[#6F6254] max-w-md">
-                    Thank you, <span className="text-[#2B2118] font-semibold">{formData.name}</span>. A principal architect will review your project parameters and contact you within 24 hours at <span className="font-mono text-[#2B2118]">{formData.phone}</span>.
+                  <h3 className="text-2xl font-serif text-[#1C140D]">Consultation Request Received</h3>
+                  <p className="text-xs sm:text-sm text-[#574839] max-w-md">
+                    Thank you, <span className="text-[#1C140D] font-semibold">{formData.name}</span>. A principal architect will review your project parameters and contact you within 24 hours at <span className="font-mono text-[#1C140D]">{formData.phone}</span>.
                   </p>
                   <button
                     onClick={() => {
@@ -226,45 +226,45 @@ export default function Contact() {
 
           {/* Studio Info Column */}
           <div className="lg:col-span-5 flex flex-col gap-5">
-            <div className="card-ivory p-6 rounded-2xl border border-[rgba(60,45,30,0.12)] flex flex-col gap-3.5 shadow-sm">
-              <div className="flex items-center gap-2 text-[10px] uppercase font-mono tracking-wider text-[#A9814A] font-semibold">
-                <Building className="w-3.5 h-3.5" strokeWidth={1.4} />
+            <div className="card-ivory p-6 sm:p-7 rounded-2xl border border-[rgba(60,45,30,0.14)] flex flex-col gap-3.5 shadow-sm">
+              <div className="flex items-center gap-2 text-[10px] uppercase font-mono tracking-wider text-[#8A5620] font-bold">
+                <Building className="w-3.5 h-3.5" strokeWidth={1.5} />
                 <span>Atelier Headquarters</span>
               </div>
-              <h3 className="text-xl font-serif text-[#2B2118]">Ambala Studio</h3>
-              <p className="text-xs text-[#6F6254] leading-relaxed">
+              <h3 className="text-xl font-serif text-[#1C140D]">Ambala Studio</h3>
+              <p className="text-xs text-[#574839] leading-relaxed">
                 {BRAND.headquarters}
               </p>
 
-              <div className="pt-2 flex flex-col gap-2 text-xs">
-                <a href={`tel:${BRAND.phone}`} className="flex items-center gap-2 text-[#2B2118] hover:text-[#A9814A] font-mono">
-                  <Phone className="w-3.5 h-3.5 text-[#A9814A]" strokeWidth={1.4} />
+              <div className="pt-2 flex flex-col gap-2.5 text-xs">
+                <a href={`tel:${BRAND.phone}`} className="flex items-center gap-2 text-[#1C140D] hover:text-[#8A5620] font-mono">
+                  <Phone className="w-3.5 h-3.5 text-[#8A5620]" strokeWidth={1.5} />
                   <span>{BRAND.phone}</span>
                 </a>
-                <a href={`mailto:${BRAND.email}`} className="flex items-center gap-2 text-[#6F6254] hover:text-[#2B2118]">
-                  <Mail className="w-3.5 h-3.5 text-[#A9814A]" strokeWidth={1.4} />
+                <a href={`mailto:${BRAND.email}`} className="flex items-center gap-2 text-[#574839] hover:text-[#1C140D]">
+                  <Mail className="w-3.5 h-3.5 text-[#8A5620]" strokeWidth={1.5} />
                   <span>{BRAND.email}</span>
                 </a>
-                <div className="flex items-center gap-2 text-[#6F6254]">
-                  <Clock className="w-3.5 h-3.5 text-[#A9814A]" strokeWidth={1.4} />
+                <div className="flex items-center gap-2 text-[#574839]">
+                  <Clock className="w-3.5 h-3.5 text-[#8A5620]" strokeWidth={1.5} />
                   <span>Mon to Sat: 10:00 AM – 7:30 PM IST</span>
                 </div>
               </div>
             </div>
 
             {/* Geographical Reach Card */}
-            <div className="card-ivory p-6 rounded-2xl border border-[rgba(60,45,30,0.12)] flex flex-col justify-between h-[210px] shadow-sm">
+            <div className="card-ivory p-6 sm:p-7 rounded-2xl border border-[rgba(60,45,30,0.14)] flex flex-col justify-between h-[210px] shadow-sm">
               <div>
-                <span className="text-[10px] uppercase font-mono tracking-widest text-[#A9814A] font-semibold">Project Reach</span>
-                <h4 className="text-base font-serif text-[#2B2118] mt-1">Northern India Commissions</h4>
-                <p className="text-xs text-[#6F6254] mt-1 leading-relaxed">
+                <span className="text-[10px] uppercase font-mono tracking-widest text-[#8A5620] font-bold">Project Reach</span>
+                <h4 className="text-base font-serif text-[#1C140D] mt-1">Northern India Commissions</h4>
+                <p className="text-xs text-[#574839] mt-1 leading-relaxed">
                   Active residential and turnkey commissions across Ambala, Chandigarh Tri-City, New Delhi, Gurugram, Ludhiana, and Panipat.
                 </p>
               </div>
 
-              <div className="flex items-center justify-between pt-3 border-t border-[rgba(60,45,30,0.08)] text-xs">
-                <span className="text-[#6F6254]">On-Site Site Audits</span>
-                <span className="text-[#A9814A] font-mono font-medium">Pan-India</span>
+              <div className="flex items-center justify-between pt-3 border-t border-[rgba(60,45,30,0.1)] text-xs">
+                <span className="text-[#574839]">On-Site Site Audits</span>
+                <span className="text-[#8A5620] font-mono font-bold">Pan-India</span>
               </div>
             </div>
           </div>

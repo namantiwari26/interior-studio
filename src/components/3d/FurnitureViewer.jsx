@@ -99,9 +99,23 @@ function ModelLoader() {
 
 export default function FurnitureViewer() {
   const [modelIndex, setModelIndex] = useState(0);
+  const [isInViewport, setIsInViewport] = useState(true);
+  const containerRef = useRef(null);
   const currentModel = FURNITURE_MODELS[modelIndex];
   const [activeColor, setActiveColor] = useState(currentModel.swatches[0].hex);
   const [activeSwatchName, setActiveSwatchName] = useState(currentModel.swatches[0].name);
+
+  useEffect(() => {
+    if (!containerRef.current) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsInViewport(entry.isIntersecting);
+      },
+      { threshold: 0.1 }
+    );
+    observer.observe(containerRef.current);
+    return () => observer.disconnect();
+  }, []);
 
   useEffect(() => {
     setActiveColor(currentModel.swatches[0].hex);
@@ -117,37 +131,37 @@ export default function FurnitureViewer() {
   };
 
   return (
-    <div className="relative w-full rounded-2xl bg-[#FAF6EF] border border-[rgba(60,45,30,0.12)] p-5 sm:p-8 shadow-sm">
+    <div ref={containerRef} className="relative w-full rounded-2xl bg-[#FAF6EF] border border-[rgba(60,45,30,0.14)] p-5 sm:p-8 shadow-sm">
       {/* Top Header & Carousel Controls */}
       <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-[rgba(60,45,30,0.1)]">
         <div>
-          <span className="text-[10px] uppercase tracking-[0.2em] text-[#A9814A] font-mono font-semibold block mb-1">
+          <span className="text-[10px] uppercase tracking-[0.2em] text-[#8A5620] font-mono font-semibold block mb-1">
             Bespoke Joinery Atelier
           </span>
-          <h3 className="text-2xl sm:text-3xl font-serif text-[#2B2118]">
+          <h3 className="text-2xl sm:text-3xl font-serif text-[#1C140D]">
             {currentModel.name}
           </h3>
-          <p className="text-xs sm:text-sm text-[#6F6254] mt-1 max-w-xl">
+          <p className="text-xs sm:text-sm text-[#574839] mt-1 max-w-xl">
             {currentModel.subtitle}
           </p>
         </div>
 
         {/* Carousel Prev / Next */}
         <div className="flex items-center gap-3">
-          <span className="text-xs font-mono text-[#6F6254]">
+          <span className="text-xs font-mono text-[#574839]">
             0{modelIndex + 1} / 0{FURNITURE_MODELS.length}
           </span>
           <div className="flex items-center gap-1.5">
             <button
               onClick={handlePrev}
-              className="p-2.5 rounded-full border border-[rgba(60,45,30,0.15)] bg-[#FAF6EF] text-[#2B2118] hover:border-[#A9814A] hover:text-[#A9814A] transition-all cursor-pointer"
+              className="p-2.5 rounded-full border border-[rgba(60,45,30,0.18)] bg-[#FAF6EF] text-[#1C140D] hover:border-[#8A5620] hover:text-[#8A5620] transition-all cursor-pointer"
               title="Previous Model"
             >
               <ChevronLeft className="w-4 h-4" strokeWidth={1.4} />
             </button>
             <button
               onClick={handleNext}
-              className="p-2.5 rounded-full border border-[rgba(60,45,30,0.15)] bg-[#FAF6EF] text-[#2B2118] hover:border-[#A9814A] hover:text-[#A9814A] transition-all cursor-pointer"
+              className="p-2.5 rounded-full border border-[rgba(60,45,30,0.18)] bg-[#FAF6EF] text-[#1C140D] hover:border-[#8A5620] hover:text-[#8A5620] transition-all cursor-pointer"
               title="Next Model"
             >
               <ChevronRight className="w-4 h-4" strokeWidth={1.4} />
@@ -157,17 +171,19 @@ export default function FurnitureViewer() {
       </div>
 
       {/* Main 3D Canvas Area (Soft Sand Background) */}
-      <div className="relative h-[400px] sm:h-[460px] w-full my-5 rounded-xl overflow-hidden bg-gradient-to-b from-[#FAF6EF] to-[#EAE1D3]/80 border border-[rgba(60,45,30,0.08)]">
+      <div className="relative h-[380px] sm:h-[460px] w-full my-5 rounded-xl overflow-hidden bg-gradient-to-b from-[#FAF6EF] to-[#EAE1D3]/80 border border-[rgba(60,45,30,0.1)]">
         <Canvas
           shadows
           camera={{ position: [0, 1.2, 3.2], fov: 45 }}
-          dpr={[1, 1.75]}
-          gl={{ antialias: true, alpha: true }}
+          dpr={[1, 1.35]}
+          frameloop={isInViewport ? 'always' : 'never'}
+          gl={{ antialias: true, alpha: true, powerPreference: 'high-performance' }}
           className="w-full h-full cursor-grab active:cursor-grabbing"
+          style={{ touchAction: 'none' }}
         >
           <ambientLight intensity={1.1} color="#FFFBF5" />
-          <directionalLight position={[5, 8, 5]} intensity={1.3} color="#FFF8EE" castShadow shadow-mapSize={1024} />
-          <directionalLight position={[-4, 3, -4]} intensity={0.5} color="#E8D8C0" />
+          <directionalLight position={[5, 8, 5]} intensity={1.2} color="#FFF8EE" castShadow shadow-mapSize={512} />
+          <directionalLight position={[-4, 3, -4]} intensity={0.4} color="#E8D8C0" />
 
           <Suspense fallback={<ModelLoader />}>
             <ModelInstance 
@@ -176,13 +192,14 @@ export default function FurnitureViewer() {
               activeColor={activeColor}
               activeSwatchName={activeSwatchName}
             />
-            {/* Soft Warm Contact Shadows */}
+            {/* Soft Warm Contact Shadows baked once for max fps */}
             <ContactShadows 
               position={[0, -0.65, 0]} 
               opacity={0.35} 
               scale={9} 
               blur={2.2} 
               far={4} 
+              frames={1}
               color="#423428"
             />
           </Suspense>
@@ -195,20 +212,20 @@ export default function FurnitureViewer() {
             minPolarAngle={Math.PI / 6}
             maxPolarAngle={Math.PI / 2.05}
             autoRotate
-            autoRotateSpeed={0.6}
+            autoRotateSpeed={0.5}
           />
         </Canvas>
 
         {/* Orbit hint pill */}
-        <div className="absolute top-4 left-4 bg-[#FAF6EF]/90 backdrop-blur-md px-3 py-1.5 rounded-full text-[10px] text-[#6F6254] border border-[rgba(60,45,30,0.12)] pointer-events-none flex items-center gap-2">
-          <span className="w-1.5 h-1.5 rounded-full bg-[#A9814A]" />
+        <div className="absolute top-4 left-4 bg-[#FAF6EF]/95 backdrop-blur-md px-3 py-1.5 rounded-full text-[10px] text-[#574839] border border-[rgba(60,45,30,0.15)] pointer-events-none flex items-center gap-2 shadow-sm">
+          <span className="w-1.5 h-1.5 rounded-full bg-[#8A5620]" />
           <span>Rotate 360° • Zoom • Tap Hotspots</span>
         </div>
 
         {/* Price & Lead Time Badge */}
-        <div className="absolute top-4 right-4 bg-[#FAF6EF]/95 backdrop-blur-md px-4 py-2 rounded-xl border border-[rgba(60,45,30,0.12)] text-right pointer-events-none">
-          <span className="text-[9px] uppercase tracking-wider text-[#A9814A] font-mono block">Custom Commission</span>
-          <span className="text-sm font-serif font-semibold text-[#2B2118]">{currentModel.price}</span>
+        <div className="absolute top-4 right-4 bg-[#FAF6EF]/95 backdrop-blur-md px-4 py-2 rounded-xl border border-[rgba(60,45,30,0.15)] text-right pointer-events-none shadow-sm">
+          <span className="text-[9px] uppercase tracking-wider text-[#8A5620] font-mono font-medium block">Custom Commission</span>
+          <span className="text-sm font-serif font-semibold text-[#1C140D]">{currentModel.price}</span>
         </div>
       </div>
 

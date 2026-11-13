@@ -13,17 +13,18 @@
   --color-cream-light: #FAF6EF;
   --color-sand: #EAE1D3;
   --color-sand-light: #F0E8DC;
-  --color-espresso: #2B2118;
-  --color-espresso-deep: #1F1812;
-  --color-espresso-muted: #6F6254;
-  --color-brass: #A9814A;
-  --color-brass-hover: #8C6A3B;
-  --color-olive: #2F4A3F;
-  --color-olive-deep: #1E2F28;
-  --color-terracotta: #B5673F;
-  --color-border-warm: rgba(60, 45, 30, 0.12);
-  --color-border-strong: rgba(60, 45, 30, 0.22);
-  --color-border-brass: rgba(169, 129, 74, 0.35);
+  --color-espresso: #241A12;
+  --color-espresso-deep: #1A120B;
+  --color-espresso-muted: #574839;
+  --color-brass: #7D531E;
+  --color-brass-light: #94652A;
+  --color-brass-hover: #634015;
+  --color-olive: #274034;
+  --color-olive-deep: #192B23;
+  --color-terracotta: #A44A22;
+  --color-border-warm: rgba(60, 45, 30, 0.16);
+  --color-border-strong: rgba(60, 45, 30, 0.28);
+  --color-border-brass: rgba(125, 83, 30, 0.4);
 
   --font-serif: "Playfair Display", Georgia, serif;
   --font-sans: "Inter", system-ui, -apple-system, sans-serif;
@@ -118,18 +119,18 @@ body {
 }
 .btn-secondary:hover {
   background-color: #FAF6EF;
-  border-color: #A9814A;
-  color: #A9814A;
+  border-color: #7D531E;
+  color: #7D531E;
 }
 
 .btn-brass {
-  background-color: #A9814A;
+  background-color: #7D531E;
   color: #FAF6EF;
   transition: all 0.25s ease;
 }
 .btn-brass:hover {
-  background-color: #8C6A3B;
-  box-shadow: 0 6px 20px -4px rgba(169, 129, 74, 0.35);
+  background-color: #634015;
+  box-shadow: 0 6px 20px -4px rgba(125, 83, 30, 0.35);
 }
 
 /* Subtle warm film grain */

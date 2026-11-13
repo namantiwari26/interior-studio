@@ -9,10 +9,10 @@ export default function Marquee() {
       <div className="flex w-max animate-marquee">
         {items.map((item, idx) => (
           <div key={idx} className="flex items-center gap-6 px-5">
-            <span className="font-serif text-xs sm:text-sm tracking-[0.18em] text-[#2B2118] uppercase">
+            <span className="font-serif text-xs sm:text-sm tracking-[0.18em] text-[#1C140D] uppercase font-medium">
               {item}
             </span>
-            <span className="w-1 h-1 rounded-full bg-[#A9814A]" />
+            <span className="w-1.5 h-1.5 rounded-full bg-[#8A5620]" />
           </div>
         ))}
       </div>

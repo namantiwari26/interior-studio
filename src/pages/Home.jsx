@@ -40,11 +40,11 @@ export default function Home() {
           <img
             src={heroImages[heroSlide]}
             alt="Private residential villa architecture"
-            className="w-full h-full object-cover filter brightness-[0.78] contrast-100 transition-all duration-1000 scale-102"
+            className="w-full h-full object-cover filter brightness-[0.68] contrast-[1.05] transition-all duration-1000 scale-102"
           />
-          {/* Warm Gradient Scrim ensuring high-contrast readability */}
-          <div className="absolute inset-0 bg-gradient-to-t from-[#F4EEE4] via-[#F4EEE4]/40 to-[#2B2118]/70" />
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,#EAE1D3_0%,transparent_60%)] opacity-30" />
+          {/* Warm Architectural Scrim ensuring high-contrast readability */}
+          <div className="absolute inset-0 bg-gradient-to-t from-[#F4EEE4] via-[#F4EEE4]/60 to-[#1A120B]/80" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,#EAE1D3_0%,transparent_65%)] opacity-30" />
         </div>
 
         {/* 3D Depth Particle Canvas */}
@@ -56,40 +56,40 @@ export default function Home() {
             initial={{ opacity: 0, y: 25 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
-            className="text-5xl sm:text-7xl md:text-8xl lg:text-[11rem] font-serif font-normal tracking-tight text-white/95 drop-shadow-sm leading-none uppercase"
+            className="text-5xl sm:text-7xl md:text-8xl lg:text-[11rem] font-serif font-normal tracking-tight text-white/95 drop-shadow-md leading-none uppercase"
           >
             AAKRITI
           </motion.h1>
           <div className="flex items-center justify-center gap-3 sm:gap-6 -mt-1 sm:-mt-4">
-            <span className="h-px w-8 sm:w-16 bg-[#A9814A]/70" />
-            <p className="text-[10px] sm:text-xs md:text-sm tracking-[0.3em] text-[#EAE1D3] font-mono uppercase">
+            <span className="h-px w-8 sm:w-16 bg-[#C9A46A]/80" />
+            <p className="text-[10px] sm:text-xs md:text-sm tracking-[0.3em] text-[#FAF6EF] font-mono uppercase drop-shadow-sm">
               Architecture & Interior Practice
             </p>
-            <span className="h-px w-8 sm:w-16 bg-[#A9814A]/70" />
+            <span className="h-px w-8 sm:w-16 bg-[#C9A46A]/80" />
           </div>
         </div>
 
         {/* Hero Bottom Narrative & Stats */}
         <div className="relative z-20 max-w-7xl mx-auto w-full mt-auto pt-10 sm:pt-16">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end">
-            {/* Left Headline */}
+            {/* Left Headline Framed in Warm Ivory Architectural Card */}
             <motion.div 
               initial={{ opacity: 0, x: -25 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.7, delay: 0.15 }}
-              className="lg:col-span-7 flex flex-col gap-4"
+              className="lg:col-span-7 flex flex-col gap-4 p-6 sm:p-9 rounded-3xl bg-[#FAF6EF]/96 backdrop-blur-xl border border-[rgba(60,45,30,0.16)] shadow-[0_20px_50px_-15px_rgba(43,33,24,0.14)]"
             >
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#FAF6EF]/90 border border-[rgba(60,45,30,0.15)] text-[11px] text-[#2B2118] w-max font-medium">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#A9814A]" />
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#EAE1D3] border border-[rgba(60,45,30,0.18)] text-[11px] text-[#1C140D] w-max font-medium shadow-2xs">
+                <span className="w-2 h-2 rounded-full bg-[#8A5620]" />
                 <span>Established in Ambala • {BRAND.since}</span>
               </div>
 
-              <h2 className="text-3xl sm:text-5xl font-serif font-light text-[#2B2118] leading-[1.15]">
+              <h2 className="text-3xl sm:text-5xl font-serif font-light text-[#1C140D] leading-[1.15]">
                 Designing spaces. <br />
-                <span className="italic font-normal text-[#A9814A]">Elevating lives.</span>
+                <span className="italic font-normal text-[#8A5620]">Elevating lives.</span>
               </h2>
 
-              <p className="text-xs sm:text-sm text-[#4E4236] max-w-lg leading-relaxed">
+              <p className="text-xs sm:text-sm text-[#453629] max-w-lg leading-relaxed font-normal">
                 {BRAND.subheadline} Delivering tailored residences, private estates, and commercial landmarks with dedicated on-site construction stewardship.
               </p>
 
@@ -97,19 +97,19 @@ export default function Home() {
               <div className="flex flex-wrap items-center gap-3 pt-2">
                 <Link
                   to="/projects"
-                  className="group flex items-center gap-3 px-6 py-3 rounded-full btn-primary text-xs tracking-wide shadow-sm"
+                  className="group flex items-center gap-3 px-6 py-3.5 rounded-full btn-primary text-xs tracking-wide shadow-md"
                 >
-                  <span className="font-medium">View Portfolio</span>
-                  <div className="w-5 h-5 rounded-full bg-[#A9814A] text-white flex items-center justify-center group-hover:scale-105 transition-transform">
+                  <span className="font-medium text-[#FAF6EF]">View Portfolio</span>
+                  <div className="w-5 h-5 rounded-full bg-[#8A5620] text-white flex items-center justify-center group-hover:scale-105 transition-transform">
                     <ArrowUpRight className="w-3 h-3" strokeWidth={1.5} />
                   </div>
                 </Link>
 
                 <Link
                   to="/tour"
-                  className="flex items-center gap-2 px-5 py-3 rounded-full btn-secondary text-xs font-medium"
+                  className="flex items-center gap-2 px-5 py-3.5 rounded-full btn-secondary text-xs font-medium hover:border-[#8A5620] hover:text-[#8A5620] shadow-2xs"
                 >
-                  <Compass className="w-3.5 h-3.5 text-[#A9814A]" strokeWidth={1.4} />
+                  <Compass className="w-3.5 h-3.5 text-[#8A5620]" strokeWidth={1.4} />
                   <span>Explore 360 Virtual Tour</span>
                 </Link>
               </div>
@@ -123,17 +123,17 @@ export default function Home() {
               className="lg:col-span-5 flex flex-col items-start lg:items-end gap-4"
             >
               <div className="grid grid-cols-3 gap-2.5 w-full max-w-sm">
-                <div className="card-ivory p-3.5 rounded-xl text-center">
-                  <div className="text-xl sm:text-2xl font-serif font-semibold text-[#2B2118]">25</div>
-                  <div className="text-[10px] text-[#6F6254] uppercase tracking-wider mt-0.5">Years Practice</div>
+                <div className="card-ivory p-3.5 rounded-2xl text-center bg-[#FAF6EF]/96 backdrop-blur-xl border border-[rgba(60,45,30,0.16)] shadow-md">
+                  <div className="text-xl sm:text-2xl font-serif font-semibold text-[#1C140D]">25</div>
+                  <div className="text-[10px] text-[#574839] uppercase tracking-wider mt-0.5 font-medium">Years Practice</div>
                 </div>
-                <div className="card-ivory p-3.5 rounded-xl text-center">
-                  <div className="text-xl sm:text-2xl font-serif font-semibold text-[#2B2118]">250+</div>
-                  <div className="text-[10px] text-[#6F6254] uppercase tracking-wider mt-0.5">Projects Built</div>
+                <div className="card-ivory p-3.5 rounded-2xl text-center bg-[#FAF6EF]/96 backdrop-blur-xl border border-[rgba(60,45,30,0.16)] shadow-md">
+                  <div className="text-xl sm:text-2xl font-serif font-semibold text-[#1C140D]">250+</div>
+                  <div className="text-[10px] text-[#574839] uppercase tracking-wider mt-0.5 font-medium">Projects Built</div>
                 </div>
-                <div className="card-ivory p-3.5 rounded-xl text-center">
-                  <div className="text-xl sm:text-2xl font-serif font-semibold text-[#2B2118]">Ambala</div>
-                  <div className="text-[10px] text-[#6F6254] uppercase tracking-wider mt-0.5">Headquarters</div>
+                <div className="card-ivory p-3.5 rounded-2xl text-center bg-[#FAF6EF]/96 backdrop-blur-xl border border-[rgba(60,45,30,0.16)] shadow-md">
+                  <div className="text-xl sm:text-2xl font-serif font-semibold text-[#1C140D]">Ambala</div>
+                  <div className="text-[10px] text-[#574839] uppercase tracking-wider mt-0.5 font-medium">Headquarters</div>
                 </div>
               </div>
 
@@ -144,7 +144,7 @@ export default function Home() {
                     key={idx}
                     onClick={() => setHeroSlide(idx)}
                     className={`h-1.5 rounded-full transition-all cursor-pointer ${
-                      heroSlide === idx ? 'w-6 bg-[#A9814A]' : 'w-2 bg-[rgba(60,45,30,0.25)] hover:bg-[rgba(60,45,30,0.5)]'
+                      heroSlide === idx ? 'w-6 bg-[#8A5620]' : 'w-2 bg-[rgba(60,45,30,0.25)] hover:bg-[rgba(60,45,30,0.5)]'
                     }`}
                     title={`Slide ${idx + 1}`}
                   />
@@ -165,27 +165,27 @@ export default function Home() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
           {/* Left Column: Mission Narrative */}
           <div className="lg:col-span-5 flex flex-col gap-5">
-            <div className="flex items-center gap-2 text-[10px] font-semibold uppercase tracking-[0.2em] text-[#A9814A] font-mono">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#A9814A]" />
+            <div className="flex items-center gap-2 text-[10px] font-semibold uppercase tracking-[0.2em] text-[#8A5620] font-mono">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#8A5620]" />
               <span>Studio Practice</span>
             </div>
 
-            <h3 className="text-3xl sm:text-4xl font-serif font-light text-[#2B2118] leading-tight">
+            <h3 className="text-3xl sm:text-4xl font-serif font-light text-[#1C140D] leading-tight">
               Architecture grounded in purpose. <br />
-              <span className="italic font-normal text-[#A9814A]">Refined by detail.</span>
+              <span className="italic font-normal text-[#8A5620]">Refined by detail.</span>
             </h3>
 
-            <p className="text-xs sm:text-sm text-[#6F6254] leading-relaxed">
+            <p className="text-xs sm:text-sm text-[#574839] leading-relaxed">
               AAKRITI is an architectural and interior atelier founded in Ambala in 2000. We design residences that balance environmental orientation, acoustic quiet, natural materials, and joinery precision tailored to the way each family lives.
             </p>
 
             {/* Core Pillars */}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2">
               {PILLARS.map((pillar) => (
-                <div key={pillar.title} className="card-ivory p-4 rounded-xl border border-[rgba(60,45,30,0.1)]">
-                  <span className="font-serif text-sm font-semibold text-[#A9814A] block mb-1">{pillar.num}</span>
-                  <h5 className="text-xs font-serif font-medium text-[#2B2118] mb-1">{pillar.title}</h5>
-                  <p className="text-[11px] text-[#6F6254] leading-snug">{pillar.description}</p>
+                <div key={pillar.title} className="card-ivory p-4 rounded-xl border border-[rgba(60,45,30,0.12)]">
+                  <span className="font-serif text-sm font-semibold text-[#8A5620] block mb-1">{pillar.num}</span>
+                  <h5 className="text-xs font-serif font-medium text-[#1C140D] mb-1">{pillar.title}</h5>
+                  <p className="text-[11px] text-[#574839] leading-snug">{pillar.description}</p>
                 </div>
               ))}
             </div>
@@ -193,10 +193,10 @@ export default function Home() {
             <div className="pt-2">
               <Link
                 to="/about"
-                className="inline-flex items-center gap-2 text-xs font-medium text-[#2B2118] hover:text-[#A9814A] border-b border-[rgba(60,45,30,0.2)] pb-1 transition-colors"
+                className="inline-flex items-center gap-2 text-xs font-medium text-[#1C140D] hover:text-[#8A5620] border-b border-[rgba(60,45,30,0.25)] pb-1 transition-colors"
               >
                 <span>Read Studio Heritage & Philosophy</span>
-                <ChevronRight className="w-3.5 h-3.5 text-[#A9814A]" />
+                <ChevronRight className="w-3.5 h-3.5 text-[#8A5620]" />
               </Link>
             </div>
           </div>
@@ -244,17 +244,32 @@ export default function Home() {
             </Link>
           </div>
 
-          {/* 6 Cards Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+          {/* 6 Cards Grid with Visible Architectural Photos */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {SERVICES.map((srv) => (
               <div
                 key={srv.id}
-                className="group relative bg-[#FAF6EF] p-6 rounded-2xl border border-[rgba(60,45,30,0.12)] hover:border-[#A9814A] transition-all flex flex-col justify-between shadow-sm"
+                className="group relative bg-[#FAF6EF] p-5 sm:p-6 rounded-2xl border border-[rgba(60,45,30,0.14)] hover:border-[#8A5620] transition-all flex flex-col justify-between shadow-sm hover:shadow-md"
               >
                 <div>
-                  <div className="flex items-center justify-between mb-4">
-                    <span className="font-serif text-lg text-[#A9814A] font-medium">{srv.num}</span>
-                    <div className="w-9 h-9 rounded-full border border-[rgba(60,45,30,0.12)] flex items-center justify-center text-[#2B2118] group-hover:border-[#A9814A] transition-colors">
+                  {/* Service Photo Header - Always Visible on Phone & Desktop */}
+                  <div className="relative h-44 sm:h-48 w-full rounded-xl overflow-hidden mb-4 bg-[#EAE1D3] border border-[rgba(60,45,30,0.1)]">
+                    <img
+                      src={srv.image}
+                      alt={srv.title}
+                      loading="lazy"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                    />
+                    <div className="absolute top-3 left-3 bg-[#FAF6EF]/95 backdrop-blur-md px-2.5 py-1 rounded-md text-[10px] font-mono font-semibold text-[#8A5620] border border-[rgba(60,45,30,0.12)] shadow-2xs">
+                      STUDIO {srv.num}
+                    </div>
+                  </div>
+
+                  <div className="flex items-center justify-between mb-2.5">
+                    <h4 className="text-xl font-serif font-medium text-[#1C140D] group-hover:text-[#8A5620] transition-colors">
+                      {srv.title}
+                    </h4>
+                    <div className="w-8 h-8 rounded-full border border-[rgba(60,45,30,0.15)] flex items-center justify-center text-[#1C140D] group-hover:border-[#8A5620] group-hover:text-[#8A5620] transition-colors shrink-0">
                       {srv.num === "01" && <Building2 className="w-4 h-4" strokeWidth={1.4} />}
                       {srv.num === "02" && <Armchair className="w-4 h-4" strokeWidth={1.4} />}
                       {srv.num === "03" && <HomeIcon className="w-4 h-4" strokeWidth={1.4} />}
@@ -264,21 +279,21 @@ export default function Home() {
                     </div>
                   </div>
 
-                  <h4 className="text-lg font-serif font-medium text-[#2B2118] group-hover:text-[#A9814A] transition-colors">
-                    {srv.title}
-                  </h4>
-                  <p className="text-xs text-[#6F6254] mt-2 leading-relaxed">
+                  <p className="text-xs text-[#574839] leading-relaxed">
                     {srv.shortDesc}
                   </p>
                 </div>
 
-                <div className="pt-5 mt-5 border-t border-[rgba(60,45,30,0.08)] flex items-center justify-between">
-                  <span className="text-[10px] font-mono text-[#6F6254]">DISCIPLINE {srv.num}</span>
+                <div className="pt-4 mt-5 border-t border-[rgba(60,45,30,0.08)] flex items-center justify-between">
+                  <span className="text-[10px] font-mono text-[#574839] uppercase tracking-wider">Comprehensive Scope</span>
                   <Link
                     to="/services"
-                    className="w-7 h-7 rounded-full bg-[#EAE1D3] flex items-center justify-center text-[#2B2118] group-hover:bg-[#A9814A] group-hover:text-white transition-all"
+                    className="flex items-center gap-1.5 text-xs font-medium text-[#1C140D] group-hover:text-[#8A5620] transition-colors"
                   >
-                    <ArrowUpRight className="w-3.5 h-3.5" strokeWidth={1.4} />
+                    <span>View Specifications</span>
+                    <div className="w-6 h-6 rounded-full bg-[#EAE1D3] flex items-center justify-center group-hover:bg-[#8A5620] group-hover:text-white transition-all">
+                      <ArrowUpRight className="w-3.5 h-3.5" strokeWidth={1.4} />
+                    </div>
                   </Link>
                 </div>
               </div>
@@ -402,20 +417,20 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-8">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
             <div>
-              <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[#A9814A] font-mono">
+              <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[#8A5620] font-mono">
                 Recent Commissions
               </span>
-              <h3 className="text-3xl sm:text-4xl font-serif font-light text-[#2B2118] mt-1">
+              <h3 className="text-3xl sm:text-4xl font-serif font-light text-[#1C140D] mt-1">
                 Spaces shaped by <br />
-                <span className="italic font-normal text-[#A9814A]">material and light.</span>
+                <span className="italic font-normal text-[#8A5620]">material and light.</span>
               </h3>
             </div>
             <Link
               to="/projects"
-              className="inline-flex items-center gap-2 text-xs font-medium text-[#2B2118] hover:text-[#A9814A] bg-[#FAF6EF] px-4 py-2 rounded-full border border-[rgba(60,45,30,0.15)] shadow-sm"
+              className="inline-flex items-center gap-2 text-xs font-medium text-[#1C140D] hover:text-[#8A5620] bg-[#FAF6EF] px-4 py-2 rounded-full border border-[rgba(60,45,30,0.18)] shadow-sm"
             >
               <span>View All Commissions</span>
-              <ArrowUpRight className="w-3.5 h-3.5 text-[#A9814A]" strokeWidth={1.5} />
+              <ArrowUpRight className="w-3.5 h-3.5 text-[#8A5620]" strokeWidth={1.5} />
             </Link>
           </div>
 

@@ -47,59 +47,56 @@ export default function Services() {
 
         {/* Services In-Depth List */}
         <div className="space-y-10 mb-20">
-          {SERVICES.map((srv, idx) => (
+          {SERVICES.map((srv) => (
             <div
               key={srv.id}
-              className="card-ivory p-6 sm:p-9 rounded-2xl border border-[rgba(60,45,30,0.12)] grid grid-cols-1 lg:grid-cols-12 gap-8 items-center shadow-sm"
+              className="card-ivory p-6 sm:p-9 rounded-2xl border border-[rgba(60,45,30,0.14)] grid grid-cols-1 lg:grid-cols-12 gap-8 items-center shadow-sm"
             >
-              {/* Left Details */}
+              {/* Service Architectural Photo - Order first on mobile so phone users see it instantly */}
+              <div className="lg:col-span-5 order-first lg:order-last h-60 sm:h-72 lg:h-[340px] rounded-xl overflow-hidden border border-[rgba(60,45,30,0.12)] bg-[#EAE1D3] relative shadow-2xs">
+                <img
+                  src={srv.image}
+                  alt={srv.title}
+                  loading="eager"
+                  className="w-full h-full object-cover hover:scale-103 transition-transform duration-700"
+                />
+                <div className="absolute bottom-3 left-3 bg-[#FAF6EF]/95 backdrop-blur-md px-3 py-1 rounded-md text-[10px] font-mono text-[#8A5620] font-semibold border border-[rgba(60,45,30,0.12)] shadow-sm">
+                  PORTFOLIO ARCHIVE • {srv.num}
+                </div>
+              </div>
+
+              {/* Service Details */}
               <div className="lg:col-span-7 flex flex-col gap-3.5">
                 <div className="flex items-center gap-3">
-                  <span className="text-sm font-serif font-semibold text-[#A9814A]">
+                  <span className="text-sm font-serif font-semibold text-[#8A5620]">
                     {srv.num}
                   </span>
-                  <span className="text-[10px] text-[#6F6254] uppercase tracking-wider font-mono">{srv.shortDesc}</span>
+                  <span className="text-[10px] text-[#574839] uppercase tracking-wider font-mono font-medium">{srv.shortDesc}</span>
                 </div>
 
-                <h2 className="text-2xl sm:text-3xl font-serif text-[#2B2118]">
+                <h2 className="text-2xl sm:text-3xl font-serif text-[#1C140D]">
                   {srv.title}
                 </h2>
 
-                <p className="text-xs sm:text-sm text-[#6F6254] leading-relaxed">
+                <p className="text-xs sm:text-sm text-[#574839] leading-relaxed">
                   {srv.fullDesc}
                 </p>
 
                 {/* Features checklist with thin brass dashes */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-1">
                   {srv.features.map((feat, fIdx) => (
-                    <div key={fIdx} className="flex items-start gap-2 text-xs text-[#4E4236]">
-                      <span className="w-1.5 h-px bg-[#A9814A] mt-2 shrink-0" />
+                    <div key={fIdx} className="flex items-start gap-2 text-xs text-[#3E3125]">
+                      <span className="w-2 h-0.5 bg-[#8A5620] mt-2 shrink-0 rounded-full" />
                       <span>{feat}</span>
                     </div>
                   ))}
                 </div>
 
                 {/* Deliverables */}
-                <div className="mt-2 p-3.5 rounded-xl bg-[#EAE1D3]/50 border border-[rgba(60,45,30,0.08)] text-xs text-[#6F6254]">
-                  <span className="text-[#2B2118] font-medium block mb-0.5">Atelier Deliverables</span>
+                <div className="mt-2 p-3.5 rounded-xl bg-[#EAE1D3]/60 border border-[rgba(60,45,30,0.1)] text-xs text-[#574839]">
+                  <span className="text-[#1C140D] font-medium block mb-0.5">Atelier Deliverables</span>
                   <span className="text-[11px] leading-relaxed">{srv.deliverables}</span>
                 </div>
-              </div>
-
-              {/* Right Image */}
-              <div className="lg:col-span-5 h-[260px] sm:h-[320px] rounded-xl overflow-hidden border border-[rgba(60,45,30,0.1)]">
-                <img
-                  src={
-                    idx === 0 ? IMAGES.services.architectural :
-                    idx === 1 ? IMAGES.services.interior :
-                    idx === 2 ? IMAGES.services.residential :
-                    idx === 3 ? IMAGES.services.commercial :
-                    idx === 4 ? IMAGES.services.kitchen :
-                    IMAGES.services.turnkey
-                  }
-                  alt={srv.title}
-                  className="w-full h-full object-cover hover:scale-103 transition-transform duration-700"
-                />
               </div>
             </div>
           ))}

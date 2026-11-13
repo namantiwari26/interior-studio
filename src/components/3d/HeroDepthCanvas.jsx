@@ -75,16 +75,27 @@ function ParallaxRig() {
 }
 
 export default function HeroDepthCanvas() {
+  const [isDesktop, setIsDesktop] = React.useState(false);
+
+  React.useEffect(() => {
+    const check = () => setIsDesktop(window.innerWidth >= 768);
+    check();
+    window.addEventListener('resize', check);
+    return () => window.removeEventListener('resize', check);
+  }, []);
+
+  if (!isDesktop) return null;
+
   return (
-    <div className="absolute inset-0 pointer-events-none z-10 overflow-hidden">
+    <div className="absolute inset-0 pointer-events-none z-10 overflow-hidden hidden md:block">
       <Canvas
         camera={{ position: [0, 0, 5], fov: 60 }}
-        dpr={[1, 1.5]}
-        gl={{ alpha: true, antialias: true }}
+        dpr={1}
+        gl={{ alpha: true, antialias: false, powerPreference: 'low-power' }}
       >
         <Suspense fallback={null}>
           <ambientLight intensity={0.5} />
-          <DustParticles count={65} />
+          <DustParticles count={25} />
           <ParallaxRig />
         </Suspense>
       </Canvas>

@@ -51,6 +51,7 @@ export const SERVICES = [
     id: "architectural-design",
     num: "01",
     title: "Architectural Planning",
+    image: "/images/service-arch.jpg",
     shortDesc: "Custom residential architecture shaped by natural light, landscape, and thermal comfort.",
     fullDesc: "We design detached villas, family estates, and suburban homes with passive cooling layouts, double-height living volumes, and courtyards that bring daylight into deep floor plans.",
     features: [
@@ -65,6 +66,7 @@ export const SERVICES = [
     id: "interior-design",
     num: "02",
     title: "Interior Architecture & Joinery",
+    image: "/images/service-interior.jpg",
     shortDesc: "Bespoke cabinetry, tactile stone surfaces, and tailored lighting schemes.",
     fullDesc: "Our interior studio designs custom boiserie, bookmatched stone fireplaces, fluted timber panels, and acoustic drapery tailored to each client's everyday rituals.",
     features: [
@@ -79,6 +81,7 @@ export const SERVICES = [
     id: "residential-projects",
     num: "03",
     title: "Private Residential Estates",
+    image: "/images/service-residential.jpg",
     shortDesc: "End-to-end homes built for multi-generational families and modern comfort.",
     fullDesc: "From 6,000 to 18,000 square foot residences, we plan generous common gathering halls alongside quiet personal suites, private study retreats, and garden pavilions.",
     features: [
@@ -93,6 +96,7 @@ export const SERVICES = [
     id: "commercial-hospitality",
     num: "04",
     title: "Workspaces & Hospitality",
+    image: "/images/service-commercial.jpg",
     shortDesc: "Focused commercial environments that balance brand presence with functional utility.",
     fullDesc: "Executive headquarters, boutique law and medical practices, and hospitality suites designed to maintain acoustic calmness while handling high foot traffic.",
     features: [
@@ -107,6 +111,7 @@ export const SERVICES = [
     id: "modular-kitchens",
     num: "05",
     title: "Kitchens & Wardrobe Suites",
+    image: "/images/service-kitchen.jpg",
     shortDesc: "Precision German hardware paired with natural quartzite and warm veneer.",
     fullDesc: "Culinary workspaces engineered around ergonomic workflow triangles. We combine Blum and Hettich concealed runners with heat-resistant porcelain slabs and walk-in wardrobe dressing suites.",
     features: [
@@ -121,6 +126,7 @@ export const SERVICES = [
     id: "planning-turnkey",
     num: "06",
     title: "Turnkey Project Execution",
+    image: "/images/service-turnkey.jpg",
     shortDesc: "Single-source site delivery from excavation through final polishing.",
     fullDesc: "We eliminate contractor miscommunication by managing civil work, plumbing, electrical installations, painting, and joinery with dedicated on-site resident engineers.",
     features: [

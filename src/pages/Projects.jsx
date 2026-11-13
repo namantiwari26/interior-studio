@@ -16,27 +16,27 @@ export default function Projects() {
     : IMAGES.projects.filter(p => p.category.toLowerCase() === activeFilter.toLowerCase());
 
   return (
-    <div className="min-h-screen bg-[#F4EEE4] text-[#2B2118] pt-28 pb-20 px-4 sm:px-8">
+    <div className="min-h-screen bg-[#F4EEE4] text-[#1C140D] pt-28 pb-20 px-4 sm:px-8">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="max-w-2xl mb-12">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#FAF6EF] border border-[rgba(60,45,30,0.14)] text-[10px] text-[#A9814A] font-mono uppercase tracking-[0.2em] mb-3">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#FAF6EF] border border-[rgba(60,45,30,0.16)] text-[10px] text-[#8A5620] font-mono uppercase tracking-[0.2em] mb-3 font-semibold shadow-2xs">
             <span>Portfolio of Built Works</span>
           </div>
-          <h1 className="text-4xl sm:text-5xl font-serif font-light text-[#2B2118] leading-tight">
+          <h1 className="text-4xl sm:text-5xl font-serif font-light text-[#1C140D] leading-tight">
             Curated residences. <br />
-            <span className="italic font-normal text-[#A9814A]">Enduring craftsmanship.</span>
+            <span className="italic font-normal text-[#8A5620]">Enduring craftsmanship.</span>
           </h1>
-          <p className="text-xs sm:text-sm text-[#6F6254] mt-3 leading-relaxed">
+          <p className="text-xs sm:text-sm text-[#574839] mt-3 leading-relaxed">
             A selection of private residences, family villas, and commercial interiors designed and executed across Ambala, Chandigarh, Delhi NCR, and Punjab.
           </p>
         </div>
 
         {/* Category Filters */}
-        <div className="flex flex-wrap items-center gap-2 mb-10 pb-4 border-b border-[rgba(60,45,30,0.1)]">
-          <div className="flex items-center gap-2 mr-3 text-xs text-[#6F6254]">
-            <Filter className="w-3.5 h-3.5 text-[#A9814A]" strokeWidth={1.4} />
-            <span>Filter:</span>
+        <div className="flex flex-wrap items-center gap-2 mb-10 pb-4 border-b border-[rgba(60,45,30,0.12)]">
+          <div className="flex items-center gap-2 mr-3 text-xs text-[#574839]">
+            <Filter className="w-3.5 h-3.5 text-[#8A5620]" strokeWidth={1.5} />
+            <span className="font-medium">Filter:</span>
           </div>
           {categories.map((cat) => {
             const isActive = activeFilter === cat;
@@ -46,8 +46,8 @@ export default function Projects() {
                 onClick={() => setActiveFilter(cat)}
                 className={`px-4 py-1.5 rounded-full text-xs font-medium transition-all cursor-pointer ${
                   isActive
-                    ? 'bg-[#2B2118] text-[#FAF6EF] shadow-sm'
-                    : 'bg-[#FAF6EF] text-[#6F6254] border border-[rgba(60,45,30,0.12)] hover:border-[#A9814A] hover:text-[#2B2118]'
+                    ? 'bg-[#1C140D] text-[#FAF6EF] shadow-sm'
+                    : 'bg-[#FAF6EF] text-[#574839] border border-[rgba(60,45,30,0.15)] hover:border-[#8A5620] hover:text-[#1C140D]'
                 }`}
               >
                 {cat}
