@@ -9,7 +9,6 @@ export default function CustomCursor() {
   const ringRef = useRef(null);
 
   useEffect(() => {
-    // Only enable on desktop pointer devices
     const isTouch = window.matchMedia('(pointer: coarse)').matches;
     if (isTouch) return;
 
@@ -17,7 +16,6 @@ export default function CustomCursor() {
       setIsVisible(true);
       setPosition({ x: e.clientX, y: e.clientY });
 
-      // Check hovered element
       const target = e.target.closest('[data-cursor]');
       if (target) {
         setCursorType(target.getAttribute('data-cursor'));
@@ -33,11 +31,10 @@ export default function CustomCursor() {
     window.addEventListener('mousemove', handleMouseMove);
     document.addEventListener('mouseleave', handleMouseLeave);
 
-    // RAF loop for smooth trailing ring
     let animationId;
     const animate = () => {
-      trailingPos.current.x += (position.x - trailingPos.current.x) * 0.15;
-      trailingPos.current.y += (position.y - trailingPos.current.y) * 0.15;
+      trailingPos.current.x += (position.x - trailingPos.current.x) * 0.18;
+      trailingPos.current.y += (position.y - trailingPos.current.y) * 0.18;
 
       if (ringRef.current) {
         ringRef.current.style.transform = `translate3d(${trailingPos.current.x}px, ${trailingPos.current.y}px, 0) translate(-50%, -50%)`;
@@ -63,25 +60,25 @@ export default function CustomCursor() {
 
   return (
     <div className="fixed inset-0 pointer-events-none z-50 overflow-hidden">
-      {/* Center Small Dot */}
+      {/* Center Espresso Dot */}
       <div
         ref={dotRef}
-        className={`fixed top-0 left-0 w-2 h-2 rounded-full bg-amber-400 transition-opacity duration-200 ${
-          isSpecial ? 'opacity-0' : 'opacity-100'
+        className={`fixed top-0 left-0 w-2 h-2 rounded-full bg-[#2B2118] transition-opacity duration-150 pointer-events-none ${
+          isSpecial ? 'opacity-0' : 'opacity-90'
         }`}
       />
 
       {/* Trailing Outer Ring */}
       <div
         ref={ringRef}
-        className={`fixed top-0 left-0 flex items-center justify-center rounded-full transition-all duration-200 ${
+        className={`fixed top-0 left-0 flex items-center justify-center rounded-full transition-all duration-150 pointer-events-none ${
           cursorType === 'drag'
-            ? 'w-16 h-16 bg-neutral-900/90 border border-amber-400/80 text-[10px] tracking-widest text-amber-300 font-mono font-bold shadow-2xl'
+            ? 'w-16 h-16 bg-[#2B2118]/90 text-[10px] tracking-widest text-[#FAF6EF] font-mono font-medium shadow-md'
             : cursorType === 'view'
-            ? 'w-16 h-16 bg-neutral-900/90 border border-white/80 text-[10px] tracking-widest text-white font-mono font-bold shadow-2xl'
+            ? 'w-16 h-16 bg-[#2B2118]/90 text-[10px] tracking-widest text-[#FAF6EF] font-mono font-medium shadow-md'
             : cursorType === 'pointer'
-            ? 'w-10 h-10 border border-amber-400/60 bg-amber-400/10'
-            : 'w-7 h-7 border border-white/30'
+            ? 'w-9 h-9 border border-[#A9814A]/70 bg-[#A9814A]/10'
+            : 'w-7 h-7 border border-[#2B2118]/25'
         }`}
       >
         {cursorType === 'drag' && <span>DRAG</span>}
@@ -90,4 +87,3 @@ export default function CustomCursor() {
     </div>
   );
 }
-

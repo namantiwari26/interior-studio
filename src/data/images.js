@@ -8,7 +8,7 @@ export const IMAGES = {
   emeraldLounge: '/images/emerald-lounge.jpg',
   emeraldSofa: '/images/emerald-sofa.jpg',
 
-  // Reference screenshots from client
+  // Reference screenshots
   ref1: '/images/media_1794553098532_88ada8dd.jpg',
   ref2: '/images/media_1794553098697_d14c6a5b.jpg',
   ref3: '/images/media_1794553098770_7182a6e3.jpg',
@@ -17,29 +17,29 @@ export const IMAGES = {
   projects: [
     {
       id: 'the-solarium-villa',
-      title: 'The Solarium Estate',
+      title: 'Solarium Villa Estate',
       category: 'Residential',
       location: 'Ambala, Haryana',
       area: '8,400 sq.ft.',
       year: '2024',
       image: '/images/project-1.jpg',
       aspect: 'tall',
-      description: 'A glass-paved architectural marvel featuring cantilevered terraces, reflection pools, and warm walnut interiors.',
-      challenge: 'Balancing vast double-height glass facades with climate control and intimate family zones.',
-      solution: 'Custom thermal break curtain walling paired with acoustic timber acoustic fins and layered warm cove lighting.'
+      description: 'Cantilevered private villa with thermal-break curtain walls, reflection pools, and solid walnut interior joinery.',
+      challenge: 'Managing intense western summer heat while maintaining clear visual connection to surrounding garden greenery.',
+      solution: 'Deep overhangs paired with motorized timber louvers and low-E double glazing.'
     },
     {
       id: 'aurora-penthouse',
-      title: 'Aurora Sky Penthouse',
+      title: 'Aurora Sky Residence',
       category: 'Living',
       location: 'Gurugram, NCR',
       area: '5,200 sq.ft.',
       year: '2024',
       image: '/images/project-2.jpg',
       aspect: 'wide',
-      description: 'Curved bespoke travertine fireplace, fluted brass accents, and custom low-slung Italian seating.',
-      challenge: 'Creating seamless open flow without losing acoustic separation in a panoramic high-rise penthouse.',
-      solution: 'Concealed pocket brass partitions and integrated acoustic plaster ceilings with hidden magnetic architectural tracks.'
+      description: 'Honed travertine fireplace wall, patinated brass details, and low-slung tailored linen seating.',
+      challenge: 'Creating quiet family zones in an expansive high-rise floor plate without heavy structural walls.',
+      solution: 'Concealed pocket doors and acoustic micro-perforated timber ceiling linings.'
     },
     {
       id: 'serenade-lounge',
@@ -50,9 +50,9 @@ export const IMAGES = {
       year: '2023',
       image: '/images/project-3.jpg',
       aspect: 'square',
-      description: 'Private club lounge with emerald fluted walls, hand-knotted silk rugs, and architectural bronze detailing.',
-      challenge: 'Merging classical neoclassical symmetry with cutting-edge smart hospitality automation.',
-      solution: 'Bespoke walnut paneling housing tactile Lutron keypads, circadian tunable LEDs, and acoustic velvet drapery.'
+      description: 'Private executive salon with olive fluted walls, hand-knotted wool rugs, and architectural bronze trim.',
+      challenge: 'Harmonizing classical proportions with discreet Lutron lighting control and HVAC ducting.',
+      solution: 'Custom boiserie with integrated air supply grilles and hidden tactile keypads.'
     },
     {
       id: 'zenith-residence',
@@ -63,9 +63,9 @@ export const IMAGES = {
       year: '2024',
       image: '/images/project-4.jpg',
       aspect: 'wide',
-      description: 'An oasis of serenity with smoked oak wall panelling, velvet headboard, and ambient indirect illumination.',
-      challenge: 'Transforming an irregularly angled floorplan into a quiet sanctuary buffered from city noise.',
-      solution: 'Double-glazed soundproof acoustic envelope with custom curved bed wall that masks structural columns.'
+      description: 'Smoked oak wall linings, wool headboard, and indirect circadian cove lighting.',
+      challenge: 'Buffering city sound in a master bedroom wing adjacent to an urban avenue.',
+      solution: 'Acoustic multi-layer drywall assembly with double acoustic seals on all entry doors.'
     },
     {
       id: 'culinary-atelier',
@@ -76,9 +76,9 @@ export const IMAGES = {
       year: '2024',
       image: '/images/project-5.jpg',
       aspect: 'tall',
-      description: 'Bookmatched Calacatta Viola marble island, matte black titanium cabinetry, and integrated Miele appliances.',
-      challenge: 'Integrating heavy professional induction cooking tech within a museum-like minimalist entertaining kitchen.',
-      solution: 'Concealed downdraft extraction seamlessly recessed inside the stone island with wireless capacitive controls.'
+      description: 'Calacatta Viola marble island, matte charcoal cabinetry, and flush Miele induction cooking appliances.',
+      challenge: 'Integrating high-capacity cooking ventilation into a quiet, open-plan entertaining kitchen.',
+      solution: 'Recessed countertop downdraft extraction vented silently through floor plenum.'
     },
     {
       id: 'monolith-estate',
@@ -89,9 +89,9 @@ export const IMAGES = {
       year: '2023',
       image: '/images/project-6.jpg',
       aspect: 'wide',
-      description: 'Monolithic board-formed concrete and warm teak exterior seamlessly framing a serene private courtyard.',
-      challenge: 'Crafting privacy from adjacent suburban streets while flooding core living spaces with natural light.',
-      solution: 'Inverted courtyard architecture centered around a 100-year-old olive tree and water basin.'
+      description: 'Board-formed concrete and warm teak exterior organized around an internal water courtyard.',
+      challenge: 'Securing acoustic and visual privacy from adjacent roads while maximizing natural daylight.',
+      solution: 'Inward-looking courtyard layout centering on an indigenous tree and water basin.'
     }
   ],
 
@@ -99,10 +99,10 @@ export const IMAGES = {
   beforeAfter: {
     before: '/images/before-renovation.jpg',
     after: '/images/after-renovation.jpg',
-    title: 'The Courtyard Pavilion Renovation',
+    title: 'Pavilion Villa Renovation',
     location: 'Sector 9, Ambala',
-    timeline: '5 Months Turnkey',
-    description: 'Transforming a 1990s dated brick bungalow into a breathtaking light-flooded modern sanctuary.'
+    timeline: '5 months turnkey build',
+    description: 'Transforming an outdated 1990s brick residence into an open, light-flooded home with continuous travertine flooring.'
   },
 
   // Services Visuals
@@ -115,11 +115,10 @@ export const IMAGES = {
     turnkey: '/images/service-turnkey.jpg'
   },
 
-  // Client Testimonial Avatars
+  // Client Testimonials
   clients: {
     client1: '/images/client-1.jpg',
     client2: '/images/client-2.jpg',
     client3: '/images/client-3.jpg'
   }
 };
-

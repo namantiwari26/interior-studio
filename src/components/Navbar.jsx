@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { 
-  Menu, X, ArrowUpRight, Compass, Phone, Sparkles 
-} from 'lucide-react';
+import { Menu, X, ArrowUpRight, Compass } from 'lucide-react';
 import { BRAND } from '../data/content';
 
 export default function Navbar() {
@@ -17,14 +15,12 @@ export default function Navbar() {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
 
-      // Check if scrolled past threshold
-      if (currentScrollY > 40) {
+      if (currentScrollY > 30) {
         setScrolled(true);
       } else {
         setScrolled(false);
       }
 
-      // Hide navbar when scrolling down, show when scrolling up
       if (currentScrollY > lastScrollY && currentScrollY > 120) {
         setVisible(false);
       } else {
@@ -38,7 +34,6 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, [lastScrollY]);
 
-  // Close mobile menu on route change
   useEffect(() => {
     setMobileMenuOpen(false);
   }, [location.pathname]);
@@ -55,50 +50,50 @@ export default function Navbar() {
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 z-50 flex items-center justify-center transition-all duration-500 px-4 sm:px-8 py-4 sm:py-6 ${
+        className={`fixed top-0 left-0 right-0 z-50 flex items-center justify-center transition-all duration-500 px-4 sm:px-8 py-3.5 sm:py-5 ${
           visible ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0'
         }`}
       >
         <div
-          className={`w-full max-w-7xl flex items-center justify-between rounded-full transition-all duration-300 px-5 sm:px-8 py-3.5 ${
+          className={`w-full max-w-7xl flex items-center justify-between rounded-full transition-all duration-300 px-5 sm:px-8 py-3 ${
             scrolled
-              ? 'glass-pill shadow-2xl border border-white/10 backdrop-blur-xl'
-              : 'bg-neutral-950/40 backdrop-blur-md border border-white/5'
+              ? 'bg-[#FAF6EF] shadow-[0_8px_24px_rgba(43,33,24,0.06)] border border-[rgba(60,45,30,0.12)]'
+              : 'glass-cream border border-[rgba(60,45,30,0.1)]'
           }`}
         >
-          {/* Brand Logo */}
+          {/* Studio Monogram Logo */}
           <Link to="/" className="flex items-center gap-3 group">
-            <div className="w-9 h-9 rounded-full bg-gradient-to-tr from-amber-600 to-amber-300 flex items-center justify-center text-neutral-950 font-serif font-bold text-lg shadow-lg shadow-amber-500/20 group-hover:scale-105 transition-transform">
+            <div className="w-8 h-8 rounded-full border border-[rgba(60,45,30,0.2)] bg-[#FAF6EF] flex items-center justify-center text-[#2B2118] font-serif font-semibold text-sm shadow-sm group-hover:border-[#A9814A] transition-colors">
               A
             </div>
             <div className="flex flex-col">
-              <span className="font-serif font-bold text-sm sm:text-base tracking-widest text-white uppercase group-hover:text-amber-400 transition-colors">
+              <span className="font-serif font-semibold text-sm sm:text-base tracking-[0.16em] text-[#2B2118] uppercase">
                 AAKRITI
               </span>
-              <span className="text-[9px] tracking-[0.25em] text-neutral-400 uppercase -mt-0.5">
+              <span className="text-[9px] tracking-[0.24em] text-[#6F6254] uppercase -mt-0.5 font-medium">
                 Architecture & Interiors
               </span>
             </div>
           </Link>
 
           {/* Desktop Navigation Links */}
-          <nav className="hidden lg:flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-neutral-900/60 border border-white/5">
+          <nav className="hidden lg:flex items-center gap-1 px-3 py-1.5 rounded-full bg-[#FAF6EF]/60 border border-[rgba(60,45,30,0.08)]">
             {navLinks.map((link) => {
               const isActive = location.pathname === link.path;
               return (
                 <Link
                   key={link.name}
                   to={link.path}
-                  className={`relative px-4 py-1.5 rounded-full text-xs font-medium transition-all ${
+                  className={`relative px-4 py-1.5 rounded-full text-xs font-medium tracking-wide transition-all ${
                     isActive
-                      ? 'text-neutral-950 font-semibold'
-                      : 'text-neutral-300 hover:text-white hover:bg-white/5'
+                      ? 'text-[#2B2118] font-semibold'
+                      : 'text-[#6F6254] hover:text-[#2B2118] hover:bg-black/[0.03]'
                   }`}
                 >
                   {isActive && (
                     <motion.div
-                      layoutId="activePill"
-                      className="absolute inset-0 bg-amber-400 rounded-full -z-10 shadow-md shadow-amber-400/25"
+                      layoutId="activeNavPill"
+                      className="absolute inset-0 bg-[#EAE1D3] rounded-full -z-10 shadow-sm"
                       transition={{ type: 'spring', stiffness: 350, damping: 30 }}
                     />
                   )}
@@ -112,19 +107,19 @@ export default function Navbar() {
           <div className="hidden sm:flex items-center gap-3">
             <Link
               to="/tour"
-              className="hidden md:flex items-center gap-1.5 text-xs text-amber-300 font-medium px-3 py-1.5 rounded-full glass-panel-gold border border-amber-500/20 hover:border-amber-400 transition-all"
+              className="hidden md:flex items-center gap-2 text-xs text-[#2B2118] font-medium px-3.5 py-1.5 rounded-full border border-[rgba(60,45,30,0.18)] hover:border-[#A9814A] hover:text-[#A9814A] transition-all bg-[#FAF6EF]"
             >
-              <Compass className="w-3.5 h-3.5 text-amber-400 animate-spin" style={{ animationDuration: '8s' }} />
-              <span>Virtual 360°</span>
+              <Compass className="w-3.5 h-3.5 text-[#A9814A]" strokeWidth={1.4} />
+              <span>360 Virtual Study</span>
             </Link>
 
             <Link
               to="/contact"
-              className="group flex items-center gap-2 pl-4 pr-1.5 py-1.5 rounded-full bg-amber-400 text-neutral-950 font-semibold text-xs tracking-wide hover:bg-amber-300 transition-all shadow-lg shadow-amber-400/20"
+              className="group flex items-center gap-2.5 pl-4 pr-1.5 py-1.5 rounded-full btn-primary text-xs tracking-wide shadow-sm"
             >
-              <span>Consultation</span>
-              <div className="w-6 h-6 rounded-full bg-neutral-950 text-white flex items-center justify-center group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform">
-                <ArrowUpRight className="w-3.5 h-3.5" />
+              <span className="font-medium">Consultation</span>
+              <div className="w-6 h-6 rounded-full bg-[#A9814A] text-white flex items-center justify-center group-hover:bg-[#8C6A3B] transition-colors">
+                <ArrowUpRight className="w-3.5 h-3.5" strokeWidth={1.5} />
               </div>
             </Link>
           </div>
@@ -132,10 +127,10 @@ export default function Navbar() {
           {/* Mobile Hamburger Button */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="lg:hidden p-2 rounded-full glass-pill border border-white/10 text-neutral-200 hover:text-white"
+            className="lg:hidden p-2 rounded-full border border-[rgba(60,45,30,0.15)] bg-[#FAF6EF] text-[#2B2118]"
             aria-label="Toggle Navigation Menu"
           >
-            {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+            {mobileMenuOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
           </button>
         </div>
       </header>
@@ -144,47 +139,47 @@ export default function Navbar() {
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -20 }}
+            initial={{ opacity: 0, y: -15 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-40 lg:hidden bg-neutral-950/95 backdrop-blur-2xl flex flex-col justify-between p-6 pt-28"
+            exit={{ opacity: 0, y: -15 }}
+            transition={{ duration: 0.25 }}
+            className="fixed inset-0 z-40 lg:hidden bg-[#F4EEE4]/98 backdrop-blur-xl flex flex-col justify-between p-6 pt-24"
           >
-            <div className="flex flex-col gap-4">
-              <span className="text-[11px] uppercase tracking-widest text-amber-400/80 font-mono">
+            <div className="flex flex-col gap-2">
+              <span className="text-[10px] uppercase tracking-[0.2em] text-[#A9814A] font-mono font-semibold pb-2">
                 Navigation
               </span>
               {navLinks.map((link, idx) => (
                 <motion.div
                   key={link.name}
-                  initial={{ opacity: 0, x: -15 }}
+                  initial={{ opacity: 0, x: -10 }}
                   animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.05 * idx }}
+                  transition={{ delay: 0.04 * idx }}
                 >
                   <Link
                     to={link.path}
-                    className="text-2xl font-serif text-white hover:text-amber-400 transition-colors flex items-center justify-between py-2 border-b border-white/5"
+                    className="text-2xl font-serif text-[#2B2118] hover:text-[#A9814A] transition-colors flex items-center justify-between py-2.5 border-b border-[rgba(60,45,30,0.08)]"
                   >
                     <span>{link.name}</span>
-                    <ArrowUpRight className="w-5 h-5 text-neutral-500" />
+                    <ArrowUpRight className="w-4 h-4 text-[#A9814A]" strokeWidth={1.4} />
                   </Link>
                 </motion.div>
               ))}
             </div>
 
-            <div className="pt-6 border-t border-white/10 flex flex-col gap-4">
-              <div className="text-xs text-neutral-400">
-                <p className="text-white font-medium mb-1">Ambala Studio Headquarters</p>
+            <div className="pt-6 border-t border-[rgba(60,45,30,0.12)] flex flex-col gap-4">
+              <div className="text-xs text-[#6F6254]">
+                <p className="text-[#2B2118] font-medium mb-1">Ambala Studio</p>
                 <p>{BRAND.headquarters}</p>
-                <p className="mt-2 text-amber-400 font-mono">{BRAND.phone}</p>
+                <p className="mt-2 text-[#A9814A] font-mono">{BRAND.phone}</p>
               </div>
 
               <Link
                 to="/contact"
-                className="w-full flex items-center justify-center gap-2 py-3.5 rounded-full bg-amber-400 text-neutral-950 font-semibold text-sm"
+                className="w-full flex items-center justify-center gap-2 py-3 rounded-full btn-primary text-xs font-medium"
               >
                 <span>Book Architectural Consultation</span>
-                <ArrowUpRight className="w-4 h-4" />
+                <ArrowUpRight className="w-3.5 h-3.5" strokeWidth={1.5} />
               </Link>
             </div>
           </motion.div>
@@ -193,4 +188,3 @@ export default function Navbar() {
     </>
   );
 }
-

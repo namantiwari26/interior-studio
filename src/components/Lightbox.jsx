@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, MapPin, Maximize2, Sparkles, Layers } from 'lucide-react';
+import { X, MapPin } from 'lucide-react';
 
 export default function Lightbox({ project, onClose }) {
   useEffect(() => {
@@ -19,80 +19,79 @@ export default function Lightbox({ project, onClose }) {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
-        className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-8 bg-neutral-950/90 backdrop-blur-2xl"
+        className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-8 bg-[#2B2118]/60 backdrop-blur-md"
         onClick={onClose}
       >
         <motion.div
-          initial={{ scale: 0.95, opacity: 0 }}
+          initial={{ scale: 0.96, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
-          exit={{ scale: 0.95, opacity: 0 }}
-          transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-          className="relative max-w-5xl w-full max-h-[90vh] glass-panel-gold rounded-3xl overflow-hidden border border-amber-500/30 flex flex-col md:flex-row shadow-2xl"
+          exit={{ scale: 0.96, opacity: 0 }}
+          transition={{ duration: 0.25 }}
+          className="relative max-w-4xl w-full max-h-[90vh] bg-[#FAF6EF] rounded-2xl overflow-hidden border border-[rgba(60,45,30,0.18)] flex flex-col md:flex-row shadow-2xl"
           onClick={(e) => e.stopPropagation()}
         >
           {/* Close Button */}
           <button
             onClick={onClose}
-            className="absolute top-4 right-4 z-20 p-2.5 rounded-full bg-neutral-900/80 border border-white/20 text-white hover:bg-amber-400 hover:text-neutral-950 transition-all cursor-pointer"
+            className="absolute top-4 right-4 z-20 p-2 rounded-full bg-[#FAF6EF]/90 border border-[rgba(60,45,30,0.15)] text-[#2B2118] hover:text-[#A9814A] transition-colors cursor-pointer"
             title="Close Lightbox"
           >
-            <X className="w-5 h-5" />
+            <X className="w-4 h-4" strokeWidth={1.4} />
           </button>
 
-          {/* Left Large Image */}
-          <div className="md:w-3/5 h-[320px] md:h-auto relative bg-neutral-950">
+          {/* Left Large Photo */}
+          <div className="md:w-3/5 h-[300px] md:h-auto relative bg-[#EAE1D3]">
             <img
               src={project.image}
               alt={project.title}
               className="w-full h-full object-cover"
             />
-            <div className="absolute top-4 left-4 glass-pill px-3 py-1 rounded-full text-xs font-semibold text-amber-300 border border-white/10">
+            <div className="absolute top-4 left-4 bg-[#FAF6EF]/95 px-3 py-1 rounded-full text-[11px] font-medium text-[#2B2118] border border-[rgba(60,45,30,0.12)]">
               {project.category}
             </div>
           </div>
 
           {/* Right Architectural Dossier */}
-          <div className="md:w-2/5 p-6 sm:p-8 flex flex-col justify-between overflow-y-auto bg-neutral-950/70">
+          <div className="md:w-2/5 p-6 sm:p-8 flex flex-col justify-between overflow-y-auto bg-[#FAF6EF]">
             <div>
-              <div className="flex items-center gap-1.5 text-xs uppercase tracking-widest text-amber-400 font-mono font-semibold mb-1">
-                <Sparkles className="w-3.5 h-3.5" />
-                <span>Atelier Portfolio</span>
-              </div>
-              <h3 className="text-2xl sm:text-3xl font-serif font-light text-white">
+              <span className="text-[10px] uppercase tracking-[0.18em] text-[#A9814A] font-mono font-semibold">
+                Project Dossier
+              </span>
+              <h3 className="text-2xl font-serif text-[#2B2118] mt-1">
                 {project.title}
               </h3>
 
-              <div className="flex items-center gap-2 text-xs text-neutral-400 mt-2 mb-6">
-                <MapPin className="w-3.5 h-3.5 text-amber-400" />
+              <div className="flex items-center gap-2 text-xs text-[#6F6254] mt-2 mb-6 font-mono">
+                <MapPin className="w-3.5 h-3.5 text-[#A9814A]" strokeWidth={1.4} />
                 <span>{project.location}</span>
-                <span>•</span>
-                <span className="font-mono">{project.area}</span>
+                <span>/</span>
+                <span>{project.area}</span>
               </div>
 
-              <div className="space-y-4 text-xs sm:text-sm text-neutral-300">
-                <p className="leading-relaxed">{project.description}</p>
+              <div className="space-y-4 text-xs text-[#6F6254] leading-relaxed">
+                <p>{project.description}</p>
                 {project.challenge && (
-                  <div className="p-3 rounded-xl bg-white/5 border border-white/5">
-                    <span className="text-[11px] font-semibold text-amber-300 uppercase block mb-1">The Spatial Challenge</span>
-                    <p className="text-neutral-400 text-xs">{project.challenge}</p>
+                  <div className="p-3.5 rounded-xl bg-[#EAE1D3]/50 border border-[rgba(60,45,30,0.08)]">
+                    <span className="text-[10px] font-semibold text-[#2B2118] uppercase block mb-1">Spatial Challenge</span>
+                    <p>{project.challenge}</p>
                   </div>
                 )}
                 {project.solution && (
-                  <div className="p-3 rounded-xl bg-amber-500/10 border border-amber-500/20">
-                    <span className="text-[11px] font-semibold text-amber-400 uppercase block mb-1">Our Architectural Solution</span>
-                    <p className="text-neutral-300 text-xs">{project.solution}</p>
+                  <div className="p-3.5 rounded-xl bg-[#F0E8DC]/80 border border-[rgba(169,129,74,0.2)]">
+                    <span className="text-[10px] font-semibold text-[#A9814A] uppercase block mb-1">Architectural Resolution</span>
+                    <p className="text-[#2B2118]">{project.solution}</p>
                   </div>
                 )}
               </div>
             </div>
 
-            <div className="pt-6 mt-6 border-t border-white/10 flex items-center justify-between">
-              <span className="text-xs text-neutral-500 font-mono">Commission Year: {project.year}</span>
+            <div className="pt-6 mt-6 border-t border-[rgba(60,45,30,0.1)] flex items-center justify-between text-xs">
+              <span className="text-[#6F6254] font-mono">Completed: {project.year}</span>
               <a
                 href="/contact"
-                className="text-xs font-semibold text-amber-400 hover:text-amber-300 underline underline-offset-4"
+                className="text-[#A9814A] hover:text-[#8C6A3B] font-medium"
               >
-                Inquire about similar estate →
+                Inquire about this residence
               </a>
             </div>
           </div>
@@ -101,4 +100,3 @@ export default function Lightbox({ project, onClose }) {
     </AnimatePresence>
   );
 }
-

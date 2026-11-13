@@ -2,8 +2,8 @@ import React, { useRef, useMemo, Suspense } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import * as THREE from 'three';
 
-// Floating warm dust particles / golden bokeh motes
-function DustParticles({ count = 120 }) {
+// Floating subtle warm dust particles
+function DustParticles({ count = 75 }) {
   const pointsRef = useRef();
 
   const [positions, scales, speeds] = useMemo(() => {
@@ -12,12 +12,12 @@ function DustParticles({ count = 120 }) {
     const spd = new Float32Array(count);
 
     for (let i = 0; i < count; i++) {
-      pos[i * 3 + 0] = (Math.random() - 0.5) * 20;
-      pos[i * 3 + 1] = (Math.random() - 0.5) * 12;
-      pos[i * 3 + 2] = (Math.random() - 0.5) * 15;
+      pos[i * 3 + 0] = (Math.random() - 0.5) * 18;
+      pos[i * 3 + 1] = (Math.random() - 0.5) * 10;
+      pos[i * 3 + 2] = (Math.random() - 0.5) * 12;
 
-      sca[i] = Math.random() * 2.5 + 0.5;
-      spd[i] = Math.random() * 0.2 + 0.05;
+      sca[i] = Math.random() * 2.0 + 0.5;
+      spd[i] = Math.random() * 0.15 + 0.04;
     }
 
     return [pos, sca, spd];
@@ -28,13 +28,11 @@ function DustParticles({ count = 120 }) {
     const array = pointsRef.current.geometry.attributes.position.array;
 
     for (let i = 0; i < count; i++) {
-      // Gentle floating upwards and swaying
-      array[i * 3 + 1] += speeds[i] * delta * 0.8;
-      array[i * 3 + 0] += Math.sin(state.clock.elapsedTime + i) * 0.003;
+      array[i * 3 + 1] += speeds[i] * delta * 0.7;
+      array[i * 3 + 0] += Math.sin(state.clock.elapsedTime + i) * 0.002;
 
-      // Wrap around bounds
-      if (array[i * 3 + 1] > 6) {
-        array[i * 3 + 1] = -6;
+      if (array[i * 3 + 1] > 5) {
+        array[i * 3 + 1] = -5;
       }
     }
     pointsRef.current.geometry.attributes.position.needsUpdate = true;
@@ -51,10 +49,10 @@ function DustParticles({ count = 120 }) {
         />
       </bufferGeometry>
       <pointsMaterial
-        size={0.12}
-        color="#F3C98B"
+        size={0.10}
+        color="#D6B885"
         transparent
-        opacity={0.65}
+        opacity={0.5}
         blending={THREE.AdditiveBlending}
         depthWrite={false}
       />
@@ -62,46 +60,18 @@ function DustParticles({ count = 120 }) {
   );
 }
 
-// Parallax 3D camera controller based on pointer
 function ParallaxRig() {
   useFrame((state) => {
     const { pointer, camera } = state;
-    // Smooth lerp camera rotation based on pointer
-    const targetX = pointer.x * 0.6;
-    const targetY = pointer.y * 0.4;
+    const targetX = pointer.x * 0.45;
+    const targetY = pointer.y * 0.3;
 
-    camera.position.x = THREE.MathUtils.lerp(camera.position.x, targetX, 0.05);
-    camera.position.y = THREE.MathUtils.lerp(camera.position.y, targetY, 0.05);
+    camera.position.x = THREE.MathUtils.lerp(camera.position.x, targetX, 0.04);
+    camera.position.y = THREE.MathUtils.lerp(camera.position.y, targetY, 0.04);
     camera.lookAt(0, 0, 0);
   });
 
   return null;
-}
-
-// Warm volumetric light ring
-function AmbientLightRays() {
-  const meshRef = useRef();
-
-  useFrame((state) => {
-    if (meshRef.current) {
-      meshRef.current.rotation.z = state.clock.elapsedTime * 0.04;
-    }
-  });
-
-  return (
-    <group ref={meshRef} position={[0, 0, -2]}>
-      <mesh>
-        <ringGeometry args={[3, 9, 32]} />
-        <meshBasicMaterial
-          color="#C9A46A"
-          transparent
-          opacity={0.04}
-          side={THREE.DoubleSide}
-          blending={THREE.AdditiveBlending}
-        />
-      </mesh>
-    </group>
-  );
 }
 
 export default function HeroDepthCanvas() {
@@ -114,12 +84,10 @@ export default function HeroDepthCanvas() {
       >
         <Suspense fallback={null}>
           <ambientLight intensity={0.5} />
-          <DustParticles count={90} />
-          <AmbientLightRays />
+          <DustParticles count={65} />
           <ParallaxRig />
         </Suspense>
       </Canvas>
     </div>
   );
 }
-

@@ -6,24 +6,22 @@ export default function Preloader({ onComplete }) {
   const [visible, setVisible] = useState(true);
 
   useEffect(() => {
-    // Smooth progress counter
     const interval = setInterval(() => {
       setProgress((prev) => {
         if (prev >= 100) {
           clearInterval(interval);
           return 100;
         }
-        return prev + 15;
+        return prev + 18;
       });
-    }, 40);
+    }, 35);
 
-    // Hard fallback safety: never keep preloader visible for more than 900ms
     const safetyTimer = setTimeout(() => {
       clearInterval(interval);
       setProgress(100);
       setVisible(false);
       onComplete?.();
-    }, 850);
+    }, 750);
 
     return () => {
       clearInterval(interval);
@@ -38,44 +36,44 @@ export default function Preloader({ onComplete }) {
           initial={{ opacity: 1 }}
           exit={{ 
             opacity: 0,
-            transition: { duration: 0.5, ease: 'easeInOut' } 
+            transition: { duration: 0.45, ease: 'easeInOut' } 
           }}
-          className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-neutral-950 text-white select-none pointer-events-none"
+          className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-[#F4EEE4] text-[#2B2118] select-none pointer-events-none"
         >
-          {/* Subtle warm glow circle */}
-          <div className="absolute w-[400px] h-[400px] bg-amber-500/10 rounded-full blur-[100px] pointer-events-none" />
+          {/* Subtle warm center glow */}
+          <div className="absolute w-[360px] h-[360px] bg-[#EAE1D3]/80 rounded-full blur-[80px] pointer-events-none" />
 
-          {/* Logo Monogram */}
+          {/* Studio Monogram */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.85 }}
+            initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.4 }}
-            className="flex flex-col items-center gap-3"
+            transition={{ duration: 0.35 }}
+            className="flex flex-col items-center gap-3 relative z-10"
           >
-            <div className="w-16 h-16 rounded-full border border-amber-400/40 bg-neutral-900/80 flex items-center justify-center font-serif text-3xl font-bold text-amber-400 shadow-2xl shadow-amber-500/20">
+            <div className="w-14 h-14 rounded-full border border-[rgba(60,45,30,0.2)] bg-[#FAF6EF] flex items-center justify-center font-serif text-2xl font-bold text-[#2B2118] shadow-sm">
               A
             </div>
             <div className="text-center">
-              <h1 className="font-serif text-2xl tracking-[0.25em] text-white font-medium uppercase">
+              <h1 className="font-serif text-xl tracking-[0.24em] text-[#2B2118] font-medium uppercase">
                 AAKRITI
               </h1>
-              <p className="text-[10px] tracking-[0.35em] text-amber-300 uppercase mt-1">
-                Interiors & Architecture
+              <p className="text-[9px] tracking-[0.3em] text-[#A9814A] uppercase mt-0.5 font-medium">
+                Architecture & Interiors
               </p>
             </div>
           </motion.div>
 
-          {/* Gold Progress Bar & Counter */}
-          <div className="w-64 mt-12 flex flex-col gap-2">
-            <div className="h-[2px] w-full bg-neutral-800 rounded-full overflow-hidden relative">
+          {/* Slender Brass Progress Line */}
+          <div className="w-56 mt-10 flex flex-col gap-2 relative z-10">
+            <div className="h-[2px] w-full bg-[#EAE1D3] rounded-full overflow-hidden">
               <div
-                className="h-full bg-gradient-to-r from-amber-600 via-amber-400 to-amber-200 transition-all duration-75"
+                className="h-full bg-[#A9814A] transition-all duration-75"
                 style={{ width: `${progress}%` }}
               />
             </div>
-            <div className="flex items-center justify-between text-[11px] font-mono text-neutral-400">
+            <div className="flex items-center justify-between text-[10px] font-mono text-[#6F6254]">
               <span>INITIALIZING ATELIER</span>
-              <span className="text-amber-400 font-semibold">{progress}%</span>
+              <span className="text-[#A9814A] font-semibold">{progress}%</span>
             </div>
           </div>
         </motion.div>

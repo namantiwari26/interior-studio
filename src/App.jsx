@@ -20,7 +20,6 @@ import Contact from './pages/Contact';
 gsap.registerPlugin(ScrollTrigger);
 
 export default function App() {
-  const [loading, setLoading] = useState(true);
   const [scrollProgress, setScrollProgress] = useState(0);
   const location = useLocation();
 
@@ -32,7 +31,7 @@ export default function App() {
       duration: 1.2,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       smoothWheel: true,
-      touchMultiplier: 1.5,
+      touchMultiplier: 1.4,
     });
 
     lenis.on('scroll', (e) => {
@@ -62,37 +61,37 @@ export default function App() {
   }, [location.pathname]);
 
   return (
-    <div className="relative min-h-screen bg-neutral-950 text-white selection:bg-amber-400 selection:text-neutral-950">
-      {/* Film grain noise overlay */}
+    <div className="relative min-h-screen bg-[#F4EEE4] text-[#2B2118] selection:bg-[#A9814A] selection:text-[#FAF6EF]">
+      {/* Subtle warm film grain */}
       <div className="film-grain" />
 
-      {/* Interactive Desktop Custom Cursor */}
+      {/* Desktop Custom Cursor */}
       <CustomCursor />
 
-      {/* Preloader animation */}
-      <Preloader onComplete={() => setLoading(false)} />
+      {/* Editorial Preloader */}
+      <Preloader />
 
-      {/* Top Gold Scroll Progress Bar (hidden on VR Tour) */}
+      {/* Top Slender Brass Scroll Progress Line */}
       {!isTourPage && (
-        <div className="fixed top-0 left-0 right-0 h-[3px] bg-neutral-900 z-50">
+        <div className="fixed top-0 left-0 right-0 h-[2px] bg-[rgba(60,45,30,0.06)] z-50">
           <div
-            className="h-full bg-gradient-to-r from-amber-600 via-amber-400 to-amber-200 transition-all duration-100"
+            className="h-full bg-[#A9814A] transition-all duration-75"
             style={{ width: `${scrollProgress}%` }}
           />
         </div>
       )}
 
-      {/* Global Navigation Bar (hidden on VR Tour) */}
+      {/* Global Navigation Bar */}
       {!isTourPage && <Navbar />}
 
-      {/* Main Pages with Framer Motion Transition */}
+      {/* Main Pages with Smooth Fade Transition */}
       <AnimatePresence mode="wait">
         <motion.main
           key={location.pathname}
-          initial={{ opacity: 0, y: 15 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -15 }}
-          transition={{ duration: 0.35, ease: 'easeInOut' }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.25, ease: 'easeInOut' }}
           className="w-full"
         >
           <Routes location={location}>
@@ -106,7 +105,7 @@ export default function App() {
         </motion.main>
       </AnimatePresence>
 
-      {/* Global Footer (hidden on VR Tour) */}
+      {/* Global Architectural Footer */}
       {!isTourPage && <Footer />}
     </div>
   );

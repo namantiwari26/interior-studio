@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { BRAND } from '../data/content';
 import { 
   Phone, Mail, MapPin, Clock, Send, 
-  Sparkles, CheckCircle2, ArrowUpRight, Building 
+  CheckCircle2, Building 
 } from 'lucide-react';
 
 export default function Contact() {
@@ -12,8 +12,8 @@ export default function Contact() {
     phone: '',
     projectType: 'Residential Villa',
     area: '',
-    budget: '₹ 50 Lakhs - ₹ 1.5 Cr',
-    timeline: 'Within 3 - 6 Months',
+    budget: 'INR 50 Lakhs to 1.5 Cr',
+    timeline: 'Within 3 to 6 Months',
     message: ''
   });
 
@@ -33,7 +33,7 @@ export default function Contact() {
     } else if (formData.phone.trim().length < 10) {
       errs.phone = 'Please enter a valid 10-digit phone number';
     }
-    if (!formData.message.trim()) errs.message = 'Please provide details about your spatial vision';
+    if (!formData.message.trim()) errs.message = 'Please provide details about your site or spatial requirements';
     setErrors(errs);
     return Object.keys(errs).length === 0;
   };
@@ -42,40 +42,38 @@ export default function Contact() {
     e.preventDefault();
     if (validate()) {
       setSubmitted(true);
-      // In production, would send to API endpoint
     }
   };
 
   return (
-    <div className="min-h-screen bg-neutral-950 text-white pt-28 pb-24 px-4 sm:px-8">
+    <div className="min-h-screen bg-[#F4EEE4] text-[#2B2118] pt-28 pb-20 px-4 sm:px-8">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
-        <div className="max-w-3xl mb-16">
-          <div className="inline-flex items-center gap-2 glass-pill px-3.5 py-1.5 rounded-full text-xs text-amber-300 border border-amber-500/30 mb-3">
-            <Sparkles className="w-3.5 h-3.5 text-amber-400" />
-            <span>DISCOVERY & COMMISSION INQUIRY</span>
+        <div className="max-w-2xl mb-14">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#FAF6EF] border border-[rgba(60,45,30,0.14)] text-[10px] text-[#A9814A] font-mono uppercase tracking-[0.2em] mb-3">
+            <span>Project Inquiries</span>
           </div>
-          <h1 className="text-4xl sm:text-6xl font-serif font-light text-white leading-tight">
-            Let&apos;s create something <br />
-            <span className="italic font-normal text-amber-300">extraordinary together.</span>
+          <h1 className="text-4xl sm:text-5xl font-serif font-light text-[#2B2118] leading-tight">
+            Begin your architectural <br />
+            <span className="italic font-normal text-[#A9814A]">consultation.</span>
           </h1>
-          <p className="text-xs sm:text-sm text-neutral-400 mt-4 leading-relaxed font-light">
-            Book an initial architectural consultation at our Ambala design studio or request a private site audit across Northern India.
+          <p className="text-xs sm:text-sm text-[#6F6254] mt-3 leading-relaxed">
+            Schedule an initial consultation at our Ambala studio or request an on-site property review across Northern India.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
           {/* Form Column */}
           <div className="lg:col-span-7">
-            <div className="glass-panel p-6 sm:p-10 rounded-3xl border border-white/10 shadow-2xl relative">
+            <div className="card-ivory p-6 sm:p-9 rounded-2xl border border-[rgba(60,45,30,0.12)] shadow-sm relative">
               {submitted ? (
-                <div className="py-16 text-center flex flex-col items-center gap-4">
-                  <div className="w-16 h-16 rounded-full bg-amber-400/20 text-amber-400 flex items-center justify-center border border-amber-400/40">
-                    <CheckCircle2 className="w-8 h-8" />
+                <div className="py-14 text-center flex flex-col items-center gap-3">
+                  <div className="w-12 h-12 rounded-full bg-[#EAE1D3] text-[#2B2118] flex items-center justify-center border border-[#A9814A]">
+                    <CheckCircle2 className="w-6 h-6 text-[#A9814A]" strokeWidth={1.4} />
                   </div>
-                  <h3 className="text-2xl sm:text-3xl font-serif text-white">Consultation Request Received</h3>
-                  <p className="text-xs sm:text-sm text-neutral-300 max-w-md">
-                    Thank you, <span className="text-amber-300 font-semibold">{formData.name}</span>. Our principal architect will review your project parameters and contact you within 24 hours at <span className="text-white font-mono">{formData.phone}</span>.
+                  <h3 className="text-2xl font-serif text-[#2B2118]">Consultation Request Received</h3>
+                  <p className="text-xs sm:text-sm text-[#6F6254] max-w-md">
+                    Thank you, <span className="text-[#2B2118] font-semibold">{formData.name}</span>. A principal architect will review your project parameters and contact you within 24 hours at <span className="font-mono text-[#2B2118]">{formData.phone}</span>.
                   </p>
                   <button
                     onClick={() => {
@@ -86,22 +84,21 @@ export default function Contact() {
                         phone: '',
                         projectType: 'Residential Villa',
                         area: '',
-                        budget: '₹ 50 Lakhs - ₹ 1.5 Cr',
-                        timeline: 'Within 3 - 6 Months',
+                        budget: 'INR 50 Lakhs to 1.5 Cr',
+                        timeline: 'Within 3 to 6 Months',
                         message: ''
                       });
                     }}
-                    className="mt-4 px-6 py-2.5 rounded-full glass-pill border border-white/20 text-xs text-neutral-300 hover:text-white"
+                    className="mt-4 px-5 py-2 rounded-full border border-[rgba(60,45,30,0.2)] text-xs text-[#2B2118] hover:border-[#A9814A]"
                   >
                     Send Another Inquiry
                   </button>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} className="space-y-6">
+                <form onSubmit={handleSubmit} className="space-y-5">
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    {/* Full Name */}
                     <div>
-                      <label className="block text-xs uppercase font-mono tracking-wider text-neutral-300 mb-1.5">
+                      <label className="block text-[11px] uppercase font-mono tracking-wider text-[#6F6254] mb-1">
                         Full Name *
                       </label>
                       <input
@@ -109,16 +106,15 @@ export default function Contact() {
                         placeholder="e.g. Arjun Mehta"
                         value={formData.name}
                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                        className={`w-full px-4 py-3 rounded-xl bg-neutral-900/80 border text-sm text-white placeholder-neutral-500 focus:outline-none focus:border-amber-400 transition-colors ${
-                          errors.name ? 'border-red-400' : 'border-white/10'
+                        className={`w-full px-3.5 py-2.5 rounded-lg bg-[#FAF6EF] border text-xs text-[#2B2118] placeholder-[#A8A39A] focus:outline-none focus:border-[#A9814A] transition-colors ${
+                          errors.name ? 'border-red-400' : 'border-[rgba(60,45,30,0.15)]'
                         }`}
                       />
-                      {errors.name && <p className="text-[11px] text-red-400 mt-1">{errors.name}</p>}
+                      {errors.name && <p className="text-[10px] text-red-600 mt-1">{errors.name}</p>}
                     </div>
 
-                    {/* Email */}
                     <div>
-                      <label className="block text-xs uppercase font-mono tracking-wider text-neutral-300 mb-1.5">
+                      <label className="block text-[11px] uppercase font-mono tracking-wider text-[#6F6254] mb-1">
                         Email Address *
                       </label>
                       <input
@@ -126,18 +122,17 @@ export default function Contact() {
                         placeholder="arjun@example.com"
                         value={formData.email}
                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                        className={`w-full px-4 py-3 rounded-xl bg-neutral-900/80 border text-sm text-white placeholder-neutral-500 focus:outline-none focus:border-amber-400 transition-colors ${
-                          errors.email ? 'border-red-400' : 'border-white/10'
+                        className={`w-full px-3.5 py-2.5 rounded-lg bg-[#FAF6EF] border text-xs text-[#2B2118] placeholder-[#A8A39A] focus:outline-none focus:border-[#A9814A] transition-colors ${
+                          errors.email ? 'border-red-400' : 'border-[rgba(60,45,30,0.15)]'
                         }`}
                       />
-                      {errors.email && <p className="text-[11px] text-red-400 mt-1">{errors.email}</p>}
+                      {errors.email && <p className="text-[10px] text-red-600 mt-1">{errors.email}</p>}
                     </div>
                   </div>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    {/* Phone */}
                     <div>
-                      <label className="block text-xs uppercase font-mono tracking-wider text-neutral-300 mb-1.5">
+                      <label className="block text-[11px] uppercase font-mono tracking-wider text-[#6F6254] mb-1">
                         Phone / WhatsApp *
                       </label>
                       <input
@@ -145,36 +140,34 @@ export default function Contact() {
                         placeholder="+91 98765 43210"
                         value={formData.phone}
                         onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                        className={`w-full px-4 py-3 rounded-xl bg-neutral-900/80 border text-sm text-white placeholder-neutral-500 focus:outline-none focus:border-amber-400 transition-colors ${
-                          errors.phone ? 'border-red-400' : 'border-white/10'
+                        className={`w-full px-3.5 py-2.5 rounded-lg bg-[#FAF6EF] border text-xs text-[#2B2118] placeholder-[#A8A39A] focus:outline-none focus:border-[#A9814A] transition-colors ${
+                          errors.phone ? 'border-red-400' : 'border-[rgba(60,45,30,0.15)]'
                         }`}
                       />
-                      {errors.phone && <p className="text-[11px] text-red-400 mt-1">{errors.phone}</p>}
+                      {errors.phone && <p className="text-[10px] text-red-600 mt-1">{errors.phone}</p>}
                     </div>
 
-                    {/* Project Type */}
                     <div>
-                      <label className="block text-xs uppercase font-mono tracking-wider text-neutral-300 mb-1.5">
+                      <label className="block text-[11px] uppercase font-mono tracking-wider text-[#6F6254] mb-1">
                         Commission Discipline
                       </label>
                       <select
                         value={formData.projectType}
                         onChange={(e) => setFormData({ ...formData, projectType: e.target.value })}
-                        className="w-full px-4 py-3 rounded-xl bg-neutral-900/80 border border-white/10 text-sm text-white focus:outline-none focus:border-amber-400 transition-colors"
+                        className="w-full px-3.5 py-2.5 rounded-lg bg-[#FAF6EF] border border-[rgba(60,45,30,0.15)] text-xs text-[#2B2118] focus:outline-none focus:border-[#A9814A] transition-colors"
                       >
                         <option value="Residential Villa">Private Residential Villa</option>
-                        <option value="Luxury Penthouse">Luxury High-Rise Penthouse</option>
-                        <option value="Commercial / Hospitality">Commercial & Hospitality Space</option>
+                        <option value="Luxury Penthouse">Duplex Penthouse</option>
+                        <option value="Commercial / Hospitality">Commercial & Workplace</option>
                         <option value="Modular Kitchen & Wardrobe">Modular Kitchen & Joinery</option>
-                        <option value="Full Turnkey Execution">Full Turnkey Civil & Interior</option>
+                        <option value="Full Turnkey Execution">Turnkey Civil & Fitout</option>
                       </select>
                     </div>
                   </div>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    {/* Estimated Area */}
                     <div>
-                      <label className="block text-xs uppercase font-mono tracking-wider text-neutral-300 mb-1.5">
+                      <label className="block text-[11px] uppercase font-mono tracking-wider text-[#6F6254] mb-1">
                         Approx. Area (sq. ft.)
                       </label>
                       <input
@@ -182,52 +175,49 @@ export default function Contact() {
                         placeholder="e.g. 7,500 sq.ft."
                         value={formData.area}
                         onChange={(e) => setFormData({ ...formData, area: e.target.value })}
-                        className="w-full px-4 py-3 rounded-xl bg-neutral-900/80 border border-white/10 text-sm text-white placeholder-neutral-500 focus:outline-none focus:border-amber-400 transition-colors"
-                      >
-                      </input>
+                        className="w-full px-3.5 py-2.5 rounded-lg bg-[#FAF6EF] border border-[rgba(60,45,30,0.15)] text-xs text-[#2B2118] placeholder-[#A8A39A] focus:outline-none focus:border-[#A9814A] transition-colors"
+                      />
                     </div>
 
-                    {/* Budget Range */}
                     <div>
-                      <label className="block text-xs uppercase font-mono tracking-wider text-neutral-300 mb-1.5">
-                        Investment Budget
+                      <label className="block text-[11px] uppercase font-mono tracking-wider text-[#6F6254] mb-1">
+                        Investment Scope
                       </label>
                       <select
                         value={formData.budget}
                         onChange={(e) => setFormData({ ...formData, budget: e.target.value })}
-                        className="w-full px-4 py-3 rounded-xl bg-neutral-900/80 border border-white/10 text-sm text-white focus:outline-none focus:border-amber-400 transition-colors"
+                        className="w-full px-3.5 py-2.5 rounded-lg bg-[#FAF6EF] border border-[rgba(60,45,30,0.15)] text-xs text-[#2B2118] focus:outline-none focus:border-[#A9814A] transition-colors"
                       >
-                        <option value="₹ 35 Lakhs - ₹ 75 Lakhs">₹ 35 Lakhs - ₹ 75 Lakhs</option>
-                        <option value="₹ 75 Lakhs - ₹ 1.5 Cr">₹ 75 Lakhs - ₹ 1.5 Cr</option>
-                        <option value="₹ 1.5 Cr - ₹ 3 Cr">₹ 1.5 Cr - ₹ 3 Cr</option>
-                        <option value="₹ 3 Cr+ Bespoke Luxury">₹ 3 Cr+ Bespoke Luxury</option>
+                        <option value="INR 35 Lakhs to 75 Lakhs">INR 35 Lakhs to 75 Lakhs</option>
+                        <option value="INR 75 Lakhs to 1.5 Cr">INR 75 Lakhs to 1.5 Cr</option>
+                        <option value="INR 1.5 Cr to 3 Cr">INR 1.5 Cr to 3 Cr</option>
+                        <option value="INR 3 Cr+ Bespoke Estate">INR 3 Cr+ Bespoke Estate</option>
                       </select>
                     </div>
                   </div>
 
-                  {/* Message */}
                   <div>
-                    <label className="block text-xs uppercase font-mono tracking-wider text-neutral-300 mb-1.5">
-                      Project Vision & Site Details *
+                    <label className="block text-[11px] uppercase font-mono tracking-wider text-[#6F6254] mb-1">
+                      Site Location & Spatial Requirements *
                     </label>
                     <textarea
                       rows={4}
-                      placeholder="Tell us about your plot location, lifestyle requirements, or family entertaining needs..."
+                      placeholder="Please note your plot size, city location, family gathering preferences, or architectural requirements..."
                       value={formData.message}
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                      className={`w-full px-4 py-3 rounded-xl bg-neutral-900/80 border text-sm text-white placeholder-neutral-500 focus:outline-none focus:border-amber-400 transition-colors ${
-                        errors.message ? 'border-red-400' : 'border-white/10'
+                      className={`w-full px-3.5 py-2.5 rounded-lg bg-[#FAF6EF] border text-xs text-[#2B2118] placeholder-[#A8A39A] focus:outline-none focus:border-[#A9814A] transition-colors ${
+                        errors.message ? 'border-red-400' : 'border-[rgba(60,45,30,0.15)]'
                       }`}
                     />
-                    {errors.message && <p className="text-[11px] text-red-400 mt-1">{errors.message}</p>}
+                    {errors.message && <p className="text-[10px] text-red-600 mt-1">{errors.message}</p>}
                   </div>
 
                   <button
                     type="submit"
-                    className="w-full py-4 rounded-full bg-amber-400 text-neutral-950 font-semibold text-sm hover:bg-amber-300 transition-all shadow-xl shadow-amber-400/20 flex items-center justify-center gap-2 cursor-pointer"
+                    className="w-full py-3.5 rounded-full btn-primary text-xs font-medium flex items-center justify-center gap-2 cursor-pointer shadow-sm"
                   >
-                    <span>Request Private Architectural Consultation</span>
-                    <Send className="w-4 h-4" />
+                    <span>Submit Architectural Inquiry</span>
+                    <Send className="w-3.5 h-3.5" strokeWidth={1.4} />
                   </button>
                 </form>
               )}
@@ -235,49 +225,46 @@ export default function Contact() {
           </div>
 
           {/* Studio Info Column */}
-          <div className="lg:col-span-5 flex flex-col gap-6">
-            {/* Headquarters Card */}
-            <div className="glass-panel p-6 rounded-3xl border border-white/10 flex flex-col gap-4">
-              <div className="flex items-center gap-2 text-xs uppercase font-mono tracking-wider text-amber-400">
-                <Building className="w-4 h-4" />
+          <div className="lg:col-span-5 flex flex-col gap-5">
+            <div className="card-ivory p-6 rounded-2xl border border-[rgba(60,45,30,0.12)] flex flex-col gap-3.5 shadow-sm">
+              <div className="flex items-center gap-2 text-[10px] uppercase font-mono tracking-wider text-[#A9814A] font-semibold">
+                <Building className="w-3.5 h-3.5" strokeWidth={1.4} />
                 <span>Atelier Headquarters</span>
               </div>
-              <h3 className="text-xl font-serif font-medium text-white">Ambala Studio</h3>
-              <p className="text-xs text-neutral-300 leading-relaxed">
+              <h3 className="text-xl font-serif text-[#2B2118]">Ambala Studio</h3>
+              <p className="text-xs text-[#6F6254] leading-relaxed">
                 {BRAND.headquarters}
               </p>
 
-              <div className="pt-2 flex flex-col gap-2.5 text-xs">
-                <a href={`tel:${BRAND.phone}`} className="flex items-center gap-2 text-amber-300 hover:text-white font-mono">
-                  <Phone className="w-4 h-4 text-amber-400" />
+              <div className="pt-2 flex flex-col gap-2 text-xs">
+                <a href={`tel:${BRAND.phone}`} className="flex items-center gap-2 text-[#2B2118] hover:text-[#A9814A] font-mono">
+                  <Phone className="w-3.5 h-3.5 text-[#A9814A]" strokeWidth={1.4} />
                   <span>{BRAND.phone}</span>
                 </a>
-                <a href={`mailto:${BRAND.email}`} className="flex items-center gap-2 text-neutral-300 hover:text-white">
-                  <Mail className="w-4 h-4 text-amber-400" />
+                <a href={`mailto:${BRAND.email}`} className="flex items-center gap-2 text-[#6F6254] hover:text-[#2B2118]">
+                  <Mail className="w-3.5 h-3.5 text-[#A9814A]" strokeWidth={1.4} />
                   <span>{BRAND.email}</span>
                 </a>
-                <div className="flex items-center gap-2 text-neutral-400">
-                  <Clock className="w-4 h-4 text-amber-400" />
-                  <span>Mon – Sat: 10:00 AM – 7:30 PM IST</span>
+                <div className="flex items-center gap-2 text-[#6F6254]">
+                  <Clock className="w-3.5 h-3.5 text-[#A9814A]" strokeWidth={1.4} />
+                  <span>Mon to Sat: 10:00 AM – 7:30 PM IST</span>
                 </div>
               </div>
             </div>
 
-            {/* Stylized Architectural Map Card */}
-            <div className="glass-panel p-6 rounded-3xl border border-white/10 flex flex-col justify-between h-[240px] relative overflow-hidden bg-gradient-to-br from-neutral-900 to-neutral-950">
-              <div className="absolute inset-0 opacity-15 pointer-events-none bg-[radial-gradient(#C9A46A_1px,transparent_1px)] [background-size:16px_16px]" />
-              
-              <div className="relative z-10">
-                <span className="text-[10px] uppercase font-mono tracking-widest text-amber-400">Geographic Reach</span>
-                <h4 className="text-lg font-serif text-white mt-1">Northern India & Metros</h4>
-                <p className="text-xs text-neutral-400 mt-1">
-                  Active commissions across Ambala, Chandigarh Tri-City, New Delhi, Gurugram, Ludhiana, and Panipat.
+            {/* Geographical Reach Card */}
+            <div className="card-ivory p-6 rounded-2xl border border-[rgba(60,45,30,0.12)] flex flex-col justify-between h-[210px] shadow-sm">
+              <div>
+                <span className="text-[10px] uppercase font-mono tracking-widest text-[#A9814A] font-semibold">Project Reach</span>
+                <h4 className="text-base font-serif text-[#2B2118] mt-1">Northern India Commissions</h4>
+                <p className="text-xs text-[#6F6254] mt-1 leading-relaxed">
+                  Active residential and turnkey commissions across Ambala, Chandigarh Tri-City, New Delhi, Gurugram, Ludhiana, and Panipat.
                 </p>
               </div>
 
-              <div className="relative z-10 flex items-center justify-between pt-4 border-t border-white/10 text-xs">
-                <span className="text-neutral-400">On-Site Consultations Available</span>
-                <span className="text-amber-400 font-mono font-medium">Pan-India</span>
+              <div className="flex items-center justify-between pt-3 border-t border-[rgba(60,45,30,0.08)] text-xs">
+                <span className="text-[#6F6254]">On-Site Site Audits</span>
+                <span className="text-[#A9814A] font-mono font-medium">Pan-India</span>
               </div>
             </div>
           </div>
@@ -286,4 +273,3 @@ export default function Contact() {
     </div>
   );
 }
-

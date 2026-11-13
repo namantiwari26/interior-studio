@@ -1,6 +1,6 @@
 import React, { useState, useRef, useCallback } from 'react';
 import { IMAGES } from '../data/images';
-import { Sparkles, MoveHorizontal } from 'lucide-react';
+import { MoveHorizontal } from 'lucide-react';
 
 export default function BeforeAfter({
   beforeImage = IMAGES.beforeAfter.before,
@@ -32,7 +32,7 @@ export default function BeforeAfter({
 
   return (
     <div className="w-full flex flex-col gap-6">
-      {/* Container with clip path comparison */}
+      {/* Slider Window */}
       <div
         ref={containerRef}
         onMouseDown={() => setIsDragging(true)}
@@ -41,12 +41,12 @@ export default function BeforeAfter({
         onMouseMove={handleMouseMove}
         onTouchMove={handleTouchMove}
         onClick={(e) => handleMove(e.clientX)}
-        className="relative h-[380px] sm:h-[500px] w-full rounded-3xl overflow-hidden cursor-ew-resize select-none border border-white/10 shadow-2xl"
+        className="relative h-[380px] sm:h-[480px] w-full rounded-2xl overflow-hidden cursor-ew-resize select-none border border-[rgba(60,45,30,0.14)] shadow-md"
       >
-        {/* After Image (Background) */}
+        {/* After Image */}
         <img
           src={afterImage}
-          alt="Completed luxury transformation"
+          alt="Completed architectural interior"
           className="absolute inset-0 w-full h-full object-cover"
         />
 
@@ -57,46 +57,44 @@ export default function BeforeAfter({
         >
           <img
             src={beforeImage}
-            alt="Before interior renovation"
-            className="absolute inset-0 w-full h-full object-cover filter brightness-90 grayscale-30"
+            alt="Original site condition prior to renovation"
+            className="absolute inset-0 w-full h-full object-cover filter brightness-95"
           />
         </div>
 
-        {/* Divider line and handle */}
+        {/* Divider line and brass handle */}
         <div
-          className="absolute top-0 bottom-0 w-0.5 bg-amber-400 z-20 shadow-[0_0_15px_rgba(201,164,106,0.8)]"
+          className="absolute top-0 bottom-0 w-[2px] bg-[#A9814A] z-20"
           style={{ left: `${sliderPosition}%` }}
         >
-          <div className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 w-10 h-10 rounded-full bg-amber-400 text-neutral-950 flex items-center justify-center shadow-xl border-2 border-white cursor-ew-resize hover:scale-110 transition-transform">
-            <MoveHorizontal className="w-4 h-4" />
+          <div className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 w-8 h-8 rounded-full bg-[#FAF6EF] text-[#2B2118] border border-[#A9814A] flex items-center justify-center shadow-md cursor-ew-resize">
+            <MoveHorizontal className="w-3.5 h-3.5 text-[#A9814A]" strokeWidth={1.4} />
           </div>
         </div>
 
-        {/* Badges on left and right */}
-        <div className="absolute top-4 left-4 z-10 glass-pill px-3 py-1.5 rounded-full text-xs font-semibold text-neutral-200 border border-white/10 pointer-events-none">
-          BEFORE RENOVATION
+        {/* Editorial Badges */}
+        <div className="absolute top-4 left-4 z-10 bg-[#FAF6EF]/90 backdrop-blur-md px-3 py-1 rounded-full text-[11px] font-medium text-[#2B2118] border border-[rgba(60,45,30,0.12)] pointer-events-none">
+          Site Condition Before
         </div>
-        <div className="absolute top-4 right-4 z-10 glass-panel-gold px-3 py-1.5 rounded-full text-xs font-semibold text-amber-300 border border-amber-500/30 pointer-events-none">
-          AFTER AAKRITI REALIZATION
+        <div className="absolute top-4 right-4 z-10 bg-[#2B2118]/90 backdrop-blur-md px-3 py-1 rounded-full text-[11px] font-medium text-[#FAF6EF] border border-[rgba(255,255,255,0.1)] pointer-events-none">
+          Completed Realization
         </div>
       </div>
 
-      {/* Description Below */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 glass-panel p-6 rounded-2xl border border-white/10">
+      {/* Description Dossier */}
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 card-ivory p-6 rounded-2xl border border-[rgba(60,45,30,0.12)]">
         <div>
-          <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-amber-400 mb-1">
-            <Sparkles className="w-3.5 h-3.5" />
-            <span>Turnkey Transformation Case</span>
-          </div>
-          <h4 className="text-xl font-serif text-white">{title}</h4>
-          <p className="text-xs sm:text-sm text-neutral-400 mt-1">{description}</p>
+          <span className="text-[10px] uppercase font-mono tracking-[0.16em] text-[#A9814A] font-medium">
+            Renovation Case Study
+          </span>
+          <h4 className="text-lg font-serif text-[#2B2118] mt-0.5">{title}</h4>
+          <p className="text-xs text-[#6F6254] mt-1 leading-relaxed max-w-xl">{description}</p>
         </div>
-        <div className="shrink-0 text-left sm:text-right">
-          <span className="text-xs text-neutral-400">Location:</span>
-          <p className="text-sm font-semibold text-amber-300">{location}</p>
+        <div className="shrink-0 text-left sm:text-right border-t sm:border-t-0 sm:border-l border-[rgba(60,45,30,0.1)] pt-3 sm:pt-0 sm:pl-6">
+          <span className="text-[10px] uppercase font-mono text-[#6F6254]">Location</span>
+          <p className="text-xs font-medium text-[#2B2118]">{location}</p>
         </div>
       </div>
     </div>
   );
 }
-
