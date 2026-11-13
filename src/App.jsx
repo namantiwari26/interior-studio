@@ -9,6 +9,7 @@ import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import CustomCursor from './components/CustomCursor';
 import Preloader from './components/Preloader';
+import ErrorBoundary from './components/ErrorBoundary';
 
 import Home from './pages/Home';
 import VirtualTour from './pages/VirtualTour';
@@ -84,16 +85,9 @@ export default function App() {
       {/* Global Navigation Bar */}
       {!isTourPage && <Navbar />}
 
-      {/* Main Pages with Smooth Fade Transition */}
-      <AnimatePresence mode="wait">
-        <motion.main
-          key={location.pathname}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.25, ease: 'easeInOut' }}
-          className="w-full"
-        >
+      {/* Main Pages with Smooth Page Routing */}
+      <main key={location.pathname} className="w-full">
+        <ErrorBoundary>
           <Routes location={location}>
             <Route path="/" element={<Home />} />
             <Route path="/tour" element={<VirtualTour />} />
@@ -102,8 +96,8 @@ export default function App() {
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
           </Routes>
-        </motion.main>
-      </AnimatePresence>
+        </ErrorBoundary>
+      </main>
 
       {/* Global Architectural Footer */}
       {!isTourPage && <Footer />}
