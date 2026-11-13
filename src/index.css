@@ -1,0 +1,131 @@
+@import "tailwindcss";
+@import "@fontsource/playfair-display/400.css";
+@import "@fontsource/playfair-display/600.css";
+@import "@fontsource/playfair-display/700.css";
+@import "@fontsource/playfair-display/400-italic.css";
+@import "@fontsource/inter/300.css";
+@import "@fontsource/inter/400.css";
+@import "@fontsource/inter/500.css";
+@import "@fontsource/inter/600.css";
+
+@theme {
+  --color-dark: #0E0E0F;
+  --color-charcoal: #171718;
+  --color-charcoal-light: #202022;
+  --color-emerald-deep: #0F2A24;
+  --color-emerald-card: #14352E;
+  --color-emerald-light: #1D453C;
+  --color-gold: #C9A46A;
+  --color-gold-light: #E3C896;
+  --color-cream: #F2EBE0;
+  --color-muted: #A8A39A;
+  --color-hairline: rgba(255, 255, 255, 0.1);
+  --color-hairline-gold: rgba(201, 164, 106, 0.25);
+
+  --font-serif: "Playfair Display", Georgia, serif;
+  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+}
+
+:root {
+  color-scheme: dark;
+  background-color: #0E0E0F;
+  color: #F2EBE0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #0E0E0F;
+  color: #F2EBE0;
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  selection-background-color: #C9A46A;
+  selection-color: #0E0E0F;
+}
+
+::selection {
+  background: #C9A46A;
+  color: #0E0E0F;
+}
+
+/* Smooth scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #0E0E0F;
+}
+::-webkit-scrollbar-thumb {
+  background: #28282A;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #C9A46A;
+}
+
+/* Glassmorphism utility classes */
+.glass-panel {
+  background: rgba(23, 23, 24, 0.65);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-panel-gold {
+  background: rgba(23, 23, 24, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(201, 164, 106, 0.22);
+}
+
+.glass-pill {
+  background: rgba(14, 14, 15, 0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.glass-emerald {
+  background: rgba(15, 42, 36, 0.7);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+}
+
+/* Noise overlay */
+.film-grain {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 99999;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* Serif typography */
+.font-serif {
+  font-family: var(--font-serif);
+}
+
+/* Gold glow effect */
+.glow-gold {
+  box-shadow: 0 0 45px -10px rgba(201, 164, 106, 0.35);
+}
+
+.glow-emerald {
+  box-shadow: 0 0 50px -10px rgba(20, 65, 54, 0.45);
+}
+
+/* Text stroke utility */
+.text-stroke-gold {
+  -webkit-text-stroke: 1px rgba(201, 164, 106, 0.4);
+  color: transparent;
+}
